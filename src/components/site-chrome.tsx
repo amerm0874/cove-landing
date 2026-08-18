@@ -121,6 +121,7 @@ export function Footer() {
               <Link to="/support" className="text-plum hover:text-rose">Support</Link>
               <Link to="/privacy" className="text-plum hover:text-rose">Privacy</Link>
               <Link to="/terms" className="text-plum hover:text-rose">Terms</Link>
+              <Link to="/delete-account" className="text-plum hover:text-rose">Delete Account</Link>
               <a href="mailto:coveivf@gmail.com" className="text-plum hover:text-rose">Contact</a>
             </nav>
             <SocialIcons labeled />
