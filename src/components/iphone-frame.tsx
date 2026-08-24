@@ -49,6 +49,49 @@ export function IPhoneFrame({
   );
 }
 
+/**
+ * iPhone device frame wrapping a real, edge-to-edge app screenshot.
+ * The screenshot has no baked-in status bar, so the synthetic status bar
+ * and Dynamic Island overlays sit on the screenshot's blank top margin.
+ */
+export function IPhoneScreenshot({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div className={`relative mx-auto w-full max-w-[300px] ${className}`}>
+      <span aria-hidden className="absolute -left-[2px] top-[22%] h-10 w-[2px] rounded-l-sm bg-plum/70" />
+      <span aria-hidden className="absolute -left-[2px] top-[32%] h-16 w-[2px] rounded-l-sm bg-plum/70" />
+      <span aria-hidden className="absolute -right-[2px] top-[26%] h-20 w-[2px] rounded-r-sm bg-plum/70" />
+      <div
+        className="relative rounded-[44px] p-[6px]
+        bg-gradient-to-b from-[#1c1319] via-[#241820] to-[#1c1319]
+        shadow-[0_2px_0_rgba(255,255,255,0.04)_inset,0_30px_60px_-25px_rgba(43,30,40,0.35),0_10px_25px_-15px_rgba(43,30,40,0.25)]"
+        style={{ aspectRatio: "9 / 19.5" }}
+      >
+        <div className="relative h-full w-full overflow-hidden rounded-[38px] bg-blush">
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 pt-2.5 font-mono-tnum text-[10px] text-plum/70">
+            <span>9:41</span>
+            <span aria-hidden className="flex items-center gap-1">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-plum/50" />
+              <span className="inline-block h-2 w-3 rounded-[2px] border border-plum/40" />
+            </span>
+          </div>
+          <div className="pointer-events-none absolute left-1/2 top-2 z-30 -translate-x-1/2">
+            <div className="h-[26px] w-[100px] rounded-full bg-black" />
+          </div>
+          <img src={src} alt={alt} className="relative z-10 h-full w-full object-cover object-top" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /** iPhone lock-screen frame — used for discreet notification demo. */
 export function IPhoneLockScreen({ children }: { children: ReactNode }) {
   return (

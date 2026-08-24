@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import {
   AlarmClock,
   AppWindow,
@@ -10,13 +9,15 @@ import {
   HelpCircle,
   Image,
   MessageCircle,
-  Pill,
-  ScanLine,
-  RefreshCw,
-  BellRing,
   Table,
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { IPhoneScreenshot } from "@/components/iphone-frame";
+import injectionsScreen from "@/assets/app/injections.png";
+import stagesScreen from "@/assets/app/stages.png";
+import scanSheetScreen from "@/assets/app/scan-sheet.png";
+import verifyScanScreen from "@/assets/app/verify-scan.png";
+import triggerScreen from "@/assets/app/trigger-takeover.png";
 
 
 /* ---------- Life during IVF (situations, not testimonials) ---------- */
@@ -122,61 +123,21 @@ function Chapter({
   );
 }
 
-/* --- Simple on-brand visual anchor (no device frames) --- */
-function ChapterAnchor({
-  Icon,
-  label,
-  detail,
-  tone = "blush",
-}: {
-  Icon: React.ComponentType<{ className?: string; strokeWidth?: number; "aria-hidden"?: boolean }>;
-  label: string;
-  detail: ReactNode;
-  tone?: "blush" | "sage" | "plum" | "gold";
-}) {
-  const tones: Record<string, string> = {
-    blush: "from-petal/70 via-blush to-petal/50 border-line text-plum",
-    sage: "from-sage-soft/80 via-sage-soft/40 to-white border-sage/30 text-plum",
-    plum: "from-plum via-plum-soft to-[#4a2f3d] border-plum/30 text-blush",
-    gold: "from-[#f7ecd7] via-[#fbf4e4] to-[#f7ecd7] border-gold/30 text-plum",
-  };
-  const isDark = tone === "plum";
-  return (
-    <div
-      className={`relative mx-auto flex aspect-square w-full max-w-[380px] flex-col items-center justify-center gap-5 rounded-[36px] border bg-gradient-to-br p-10 ${tones[tone]}`}
-    >
-      <span
-        aria-hidden
-        className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl ${
-          isDark ? "bg-white/10 text-blush" : "bg-white/70 text-rose"
-        }`}
-      >
-        <Icon className="h-8 w-8" strokeWidth={1.75} aria-hidden />
-      </span>
-      <div className={`font-mono-tnum text-[10px] uppercase tracking-widest ${isDark ? "text-blush/70" : "text-muted"}`}>
-        {label}
-      </div>
-      <div className={`text-center font-display text-xl leading-snug ${isDark ? "text-blush" : "text-plum"}`}>
-        {detail}
-      </div>
-    </div>
-  );
-}
-
 export function ChapterMedication() {
   return (
     <Chapter
       id="how-it-works"
       n="01"
-      eyebrow="Medication plan"
-      headline="Know exactly what tonight requires."
+      eyebrow="IVF medication plan"
+      headline="Know exactly what your IVF medication plan requires tonight."
       body="Your evening lineup, in order, with a quiet check before you start mixing. The whole plan, held together — not scattered across a PDF, a portal, and a text thread."
       media={
-        <ChapterAnchor
-          Icon={Pill}
-          label="Tonight · in order"
-          tone="blush"
-          detail={<>Gonal-F · Menopur · Cetrotide</>}
+        <img
+          src={injectionsScreen}
+          alt="Cove IVF medication tracker showing injection history with site, dose, and time for each medication"
+          className="mx-auto w-full max-w-[300px]"
+          width={763}
+          height={1652}
         />
       }
     />
@@ -187,15 +148,13 @@ export function ChapterScanner() {
   return (
     <Chapter
       n="02"
-      eyebrow="Protocol scanner"
+      eyebrow="IVF protocol scanner"
       headline="One clinic sheet becomes your entire treatment plan."
-      body="Photograph the protocol once. Cove structures it into a plan you can actually read — every drug, every dose, every day, in the same place."
+      body="Photograph the protocol once. Cove's IVF protocol scanner structures it into a plan you can actually read — every drug, every dose, every day, in the same place."
       media={
-        <ChapterAnchor
-          Icon={ScanLine}
-          label="One photo · full plan"
-          tone="sage"
-          detail={<>Every drug, every dose, every day.</>}
+        <IPhoneScreenshot
+          src={scanSheetScreen}
+          alt="Cove protocol scanner screen prompting to photograph a clinic medication sheet"
         />
       }
       reverse
@@ -209,19 +168,11 @@ export function ChapterVerification() {
       n="03"
       eyebrow="Dose verification"
       headline="When your clinic changes one number, everything stays accurate."
-      body="Update the value once — after you confirm it against your clinic sheet. Cove replaces it on tonight's card, tomorrow's reminder, and the log."
+      body="Update the value once — after you confirm it against your clinic sheet. As your IVF meds tracker, Cove replaces it on tonight's card, tomorrow's reminder, and the log."
       media={
-        <ChapterAnchor
-          Icon={RefreshCw}
-          label="Verified update"
-          tone="gold"
-          detail={
-            <span className="font-mono-tnum">
-              <span className="text-muted line-through">150 IU</span>
-              <span className="mx-2 text-rose">→</span>
-              <span className="text-plum">225 IU</span>
-            </span>
-          }
+        <IPhoneScreenshot
+          src={verifyScanScreen}
+          alt="Cove dose verification screen asking you to check each scanned medication against your clinic sheet"
         />
       }
     />
@@ -232,15 +183,13 @@ export function ChapterTrigger() {
   return (
     <Chapter
       n="04"
-      eyebrow="Trigger shot protection"
-      headline="The one reminder that cannot fail."
+      eyebrow="Trigger shot reminder"
+      headline="The trigger shot reminder that cannot fail."
       body="A countdown, escalating quiet reminders, and a clear confirmation. Discreet on your lock screen — your medications are never named."
       media={
-        <ChapterAnchor
-          Icon={BellRing}
-          label="Discreet · exact"
-          tone="plum"
-          detail={<>A quiet reminder at exactly 8:00 PM.</>}
+        <IPhoneScreenshot
+          src={triggerScreen}
+          alt="Cove trigger shot reminder screen with countdown and an I've taken it confirmation button"
         />
       }
       reverse
@@ -250,72 +199,23 @@ export function ChapterTrigger() {
 
 
 
-/* --- Chapter 5: timeline --- */
-const PHASES = [
-  { k: "Protocol", state: "done" as const },
-  { k: "Stimulation", state: "done" as const },
-  { k: "Monitoring", state: "done" as const },
-  { k: "Trigger", state: "current" as const },
-  { k: "Retrieval", state: "next" as const },
-  { k: "Fertilization report", state: "next" as const },
-  { k: "Embryos", state: "later" as const },
-  { k: "Transfer", state: "later" as const },
-  { k: "Beta test", state: "later" as const },
-
-];
-
-function TimelineVertical() {
-  return (
-    <ol className="relative rounded-3xl border border-line bg-white/80 p-6 backdrop-blur-sm sm:p-8">
-      <div aria-hidden className="absolute left-9 top-8 bottom-8 w-px bg-line sm:left-11" />
-      {PHASES.map((p, i) => {
-        const isCurrent = p.state === "current";
-        const isDone = p.state === "done";
-        const isLater = p.state === "later";
-        return (
-          <li key={p.k} className="relative flex items-center gap-4 py-3">
-            <span
-              className={`relative z-10 inline-flex h-6 w-6 items-center justify-center rounded-full border-2 ${
-                isDone ? "border-sage bg-sage-soft" : isCurrent ? "border-rose bg-rose/15 pulse-soft" : "border-line bg-white"
-              }`}
-            >
-              {isDone && <Check className="h-3 w-3 text-sage-deep" strokeWidth={3} aria-hidden />}
-              {isCurrent && <span className="h-1.5 w-1.5 rounded-full bg-rose" />}
-            </span>
-            <div className="flex flex-1 items-center justify-between gap-3">
-              <span className={`text-base ${isCurrent ? "font-semibold text-plum" : isLater ? "text-muted" : "text-plum/85"}`}>
-                <span className="font-mono-tnum text-[10px] uppercase tracking-widest text-muted mr-3">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {p.k}
-              </span>
-              {isLater && (
-                <span className="rounded-full border border-line px-2 py-0.5 font-mono-tnum text-[9px] uppercase tracking-widest text-muted">
-                  Coming soon
-                </span>
-              )}
-              {isCurrent && (
-                <span className="rounded-full bg-rose/10 px-2 py-0.5 font-mono-tnum text-[9px] uppercase tracking-widest text-rose">
-                  You are here
-                </span>
-              )}
-            </div>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
 export function ChapterTimeline() {
   return (
     <Chapter
       id="timeline"
       n="05"
-      eyebrow="Treatment timeline"
-      headline="Always know where you are."
-      body="A quiet vertical view of your cycle. Version one carries you through the stim cycle and the first fertilization report. Later stages are on the way."
-      media={<TimelineVertical />}
+      eyebrow="IVF cycle timeline"
+      headline="Always know where you are in your IVF cycle."
+      body="A quiet view of your treatment stage — from priming through recovery. Choose the stage that fits today, and Cove carries the rest of the plan with you."
+      media={
+        <img
+          src={stagesScreen}
+          alt="Cove IVF cycle timeline showing treatment stages from priming to recovery, with the current stage highlighted"
+          className="mx-auto w-full max-w-[300px]"
+          width={763}
+          height={1652}
+        />
+      }
     />
   );
 }

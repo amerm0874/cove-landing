@@ -13,11 +13,32 @@ import {
   CommunityReality,
 } from "@/components/chapters";
 import { Reveal } from "@/components/reveal";
-import { WaitlistForm } from "@/components/waitlist";
+import { APP_STORE_URL } from "@/lib/constants";
+import todayScreen from "@/assets/app/today.png";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    links: [{ rel: "canonical", href: "https://www.coveivf.life/" }],
+  }),
   component: Landing,
 });
+
+const SOFTWARE_APPLICATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Cove IVF Tracker",
+  operatingSystem: "iOS",
+  applicationCategory: "HealthApplication",
+  description:
+    "Calm IVF tracker and medication companion. Protocol scanner, exact medication lineups, dose tracking, and discreet reminders for IVF cycles.",
+  url: "https://www.coveivf.life/",
+  downloadUrl: APP_STORE_URL,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
 
 const TRUST = [
   { Icon: HeartHandshake, text: "Built with IVF patients." },
@@ -38,12 +59,16 @@ const PRIVACY = [
 const FAQ = [
   { q: "Is this medical advice?", a: "No. Cove is an organizer. It never suggests, adjusts, or interprets doses, and never predicts outcomes. Your clinic decides everything medical." },
   { q: "What happens to my scan?", a: "It's processed to read your schedule, then discarded. Your schedule is stored encrypted, in transit and at rest." },
-  { q: "Is it iPhone only?", a: "Yes, at launch." },
+  { q: "Is it iPhone only?", a: "Yes, Cove is available on iPhone now." },
 ];
 
 function Landing() {
   return (
     <div className="relative min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_APPLICATION_SCHEMA) }}
+      />
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10">
@@ -59,7 +84,7 @@ function Landing() {
         <CommunityReality />
         <Privacy />
         <Faq />
-        <Waitlist />
+        <DownloadCta />
       </main>
       <Footer />
     </div>
@@ -70,40 +95,53 @@ function Hero() {
   return (
     <section className="mx-auto max-w-3xl px-5 pt-16 pb-20 text-center sm:px-8 sm:pt-24 sm:pb-28">
       <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">
-        Your IVF companion · iOS
+        IVF Tracker · iPhone
       </p>
       <h1 className="mx-auto mt-5 font-display text-4xl leading-[1.05] font-semibold text-plum sm:text-5xl md:text-6xl">
-        From the first protocol to the final result — one calm place.
+        The calm IVF tracker for your whole cycle.
       </h1>
       <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-plum/80">
-        Cove stays with you through the whole cycle. Every medication, appointment, dose change and result — kept together and encrypted, so you're not holding it all in your head.
+        Cove is an IVF cycle tracker and medication tracker that follows you from the first protocol to the final result. Photograph your clinic's sheet for your exact IVF medication tracker lineup, then keep every dose change, appointment, and trigger shot reminder in one encrypted place — so you're not holding it all in your head.
       </p>
 
       <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
         <a
-          href="#waitlist"
+          href={APP_STORE_URL}
           className="rounded-full bg-rose px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-rose-deep focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-2"
         >
-          Join the waitlist
+          Download on the App Store
         </a>
-        <span
-          aria-label="Coming soon on the App Store"
-          className="inline-flex items-center gap-3 rounded-xl border border-plum/70 bg-plum px-4 py-2.5 text-blush select-none"
+        <a
+          href={APP_STORE_URL}
+          aria-label="Download on the App Store"
+          className="inline-flex items-center gap-3 rounded-xl border border-plum/70 bg-plum px-4 py-2.5 text-blush transition-colors hover:bg-plum-soft"
         >
           <svg aria-hidden viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
             <path d="M16.365 1.43c0 1.14-.42 2.22-1.14 3.04-.78.9-2.04 1.6-3.06 1.5-.12-1.08.42-2.22 1.14-3.02.78-.88 2.14-1.56 3.06-1.52zM20.6 17.05c-.56 1.28-.82 1.86-1.54 2.98-.98 1.52-2.36 3.42-4.08 3.44-1.52.02-1.92-.98-3.98-.96-2.06.02-2.5.98-4.02.96-1.72-.02-3.02-1.74-4-3.26-2.76-4.28-3.06-9.3-1.36-11.98 1.22-1.92 3.14-3.04 4.94-3.04 1.84 0 2.98 1 4.5 1 1.48 0 2.38-1 4.5-1 1.6 0 3.3.86 4.52 2.36-3.98 2.18-3.34 7.86.52 9.5z" />
           </svg>
           <span className="flex flex-col leading-tight">
-            <span className="font-mono-tnum text-[9px] uppercase tracking-widest opacity-70">Coming soon on the</span>
+            <span className="font-mono-tnum text-[9px] uppercase tracking-widest opacity-70">Download on the</span>
             <span className="font-display text-lg">App Store</span>
           </span>
-        </span>
+        </a>
       </div>
 
-      <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-line bg-white/60 px-4 py-2 font-mono-tnum text-[10px] uppercase tracking-widest text-plum/70">
+      <p className="mt-4 font-mono-tnum text-[11px] uppercase tracking-widest text-muted">
+        Available now on iPhone · Free to start
+      </p>
+
+      <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/60 px-4 py-2 font-mono-tnum text-[10px] uppercase tracking-widest text-plum/70">
         <Smartphone className="h-3.5 w-3.5 text-rose" aria-hidden />
         <span>iPhone · designed for IVF cycles</span>
       </div>
+
+      <img
+        src={todayScreen}
+        alt="Cove IVF tracker Today screen showing an evening medication lineup, progress ring, and next dose"
+        className="mx-auto mt-14 w-full max-w-[300px]"
+        width={763}
+        height={1652}
+      />
     </section>
   );
 }
@@ -192,14 +230,21 @@ function Faq() {
   );
 }
 
-function Waitlist() {
+function DownloadCta() {
   return (
-    <section id="waitlist" className="mx-auto max-w-3xl px-5 pt-24 pb-12 text-center sm:px-8">
-      <h2 className="font-display text-4xl font-semibold sm:text-5xl">A calm harbor for your cycle.</h2>
+    <section id="download" className="mx-auto max-w-3xl px-5 pt-24 pb-12 text-center sm:px-8">
+      <h2 className="font-display text-4xl font-semibold sm:text-5xl">A calm harbor for your cycle is ready.</h2>
       <p className="mt-5 text-lg text-plum/80">
-        Join the waitlist — one email when it's ready, quiet until then.
+        Available now on iPhone. Free to start.
       </p>
-      <WaitlistForm />
+      <div className="mt-8 flex justify-center">
+        <a
+          href={APP_STORE_URL}
+          className="rounded-full bg-rose px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-rose-deep focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-2"
+        >
+          Download on the App Store
+        </a>
+      </div>
       <p className="mt-6 text-sm text-muted">
         Encrypted on your device. Never sold, never shared.
       </p>

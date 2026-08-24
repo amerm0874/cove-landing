@@ -80,20 +80,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cove IVF — A calm harbor for your cycle" },
+      { title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
       {
         name: "description",
         content:
-          "Cove reads your clinic's protocol and builds your exact medication lineup — every drug, dose, and time. An organizer for IVF, on iOS.",
+          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
       },
-      { property: "og:title", content: "Cove IVF — A calm harbor for your cycle" },
+      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
       {
         property: "og:description",
         content:
-          "Tonight's meds, verified against your sheet. Encrypted on your device. Quiet on hard days.",
+          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.coveivf.life/" },
+      { property: "og:site_name", content: "Cove IVF" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      {
+        name: "twitter:description",
+        content:
+          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Available now on iPhone.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

@@ -56,7 +56,6 @@ function Privacy() {
         <H3>Information you give us</H3>
         <UL>
           <li><strong>Account information:</strong> when you create an account, we use Sign in with Apple or an email address. If you use Sign in with Apple, you can choose to hide your email.</li>
-          <li><strong>Waitlist information:</strong> if you join our waitlist, we collect your email address and, optionally, a social media handle you choose to provide.</li>
           <li><strong>Health and cycle information you enter:</strong> medication schedules, doses and times, appointments, and the monitoring or lab results you choose to log. You provide this; we store it so the app can show it back to you and remind you.</li>
         </UL>
 
@@ -83,7 +82,7 @@ function Privacy() {
         <UL>
           <li>To provide the app: build your schedule, send your reminders, store and display what you log.</li>
           <li>To operate, secure, and improve the service.</li>
-          <li>To contact you about the product (for example, a waitlist launch email). You can opt out of non-essential messages.</li>
+          <li>To contact you about the product (for example, a product update email). You can opt out of non-essential messages.</li>
         </UL>
         <P>We do not use your information for any purpose incompatible with these.</P>
 

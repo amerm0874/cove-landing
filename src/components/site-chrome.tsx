@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import coveLogo from "@/assets/cove-logo.png";
+import { APP_STORE_URL } from "@/lib/constants";
 
 const NAV = [
   { href: "/#how-it-works", label: "How it works" },
@@ -65,10 +66,10 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="/#waitlist"
+            href={APP_STORE_URL}
             className="rounded-full bg-rose px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-rose-deep focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-2"
           >
-            Join the waitlist
+            Download
           </a>
           <button
             type="button"
