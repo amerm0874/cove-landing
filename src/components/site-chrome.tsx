@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { FaInstagram } from "react-icons/fa";
+import { FaEnvelope, FaInstagram } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import coveLogo from "@/assets/cove-logo.png";
-import { APP_STORE_URL } from "@/lib/constants";
+import { APP_STORE_URL, CONTACT_EMAIL } from "@/lib/constants";
 
 const NAV = [
   { href: "/#how-it-works", label: "How it works" },
@@ -16,19 +16,19 @@ const NAV = [
 export function SocialIcons({ size = "sm", labeled = false }: { size?: "sm" | "lg"; labeled?: boolean }) {
   const dim = size === "lg" ? "h-12 w-12 text-xl" : "h-9 w-9 text-base";
   const items = [
-    { href: "https://www.instagram.com/cove_appp/", label: "Cove on Instagram", Icon: FaInstagram },
-    { href: "https://www.tiktok.com/@cove_app?is_from_webapp=1&sender_device=pc", label: "Cove on TikTok", Icon: SiTiktok },
+    { href: "https://www.instagram.com/cove_appp/", label: "Cove on Instagram", Icon: FaInstagram, external: true },
+    { href: "https://www.tiktok.com/@cove_app?is_from_webapp=1&sender_device=pc", label: "Cove on TikTok", Icon: SiTiktok, external: true },
+    { href: `mailto:${CONTACT_EMAIL}`, label: "Email Cove", Icon: FaEnvelope, external: false },
   ];
   return (
     <div className={`flex items-center gap-3 ${labeled ? "flex-col sm:flex-row" : ""}`}>
       {labeled && <span className="font-mono-tnum text-xs uppercase tracking-widest text-muted">Follow along</span>}
       <div className="flex items-center gap-2">
-        {items.map(({ href, label, Icon }) => (
+        {items.map(({ href, label, Icon, external }) => (
           <a
             key={href}
             href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             aria-label={label}
             className={`${dim} inline-flex items-center justify-center rounded-full border border-line bg-petal/60 text-plum transition-colors hover:bg-rose hover:text-white hover:border-rose focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-2`}
           >
@@ -123,6 +123,7 @@ export function Footer() {
               <Link to="/privacy" className="text-plum hover:text-rose">Privacy</Link>
               <Link to="/terms" className="text-plum hover:text-rose">Terms</Link>
               <Link to="/delete-account" className="text-plum hover:text-rose">Delete Account</Link>
+              <Link to="/affiliate" className="text-plum hover:text-rose">Affiliate</Link>
               <a href="mailto:coveivf@gmail.com" className="text-plum hover:text-rose">Contact</a>
             </nav>
             <SocialIcons labeled />

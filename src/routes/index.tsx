@@ -107,12 +107,6 @@ function Hero() {
       <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
         <a
           href={APP_STORE_URL}
-          className="rounded-full bg-rose px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-rose-deep focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-2"
-        >
-          Download on the App Store
-        </a>
-        <a
-          href={APP_STORE_URL}
           aria-label="Download on the App Store"
           className="inline-flex items-center gap-3 rounded-xl border border-plum/70 bg-plum px-4 py-2.5 text-blush transition-colors hover:bg-plum-soft"
         >
