@@ -13,6 +13,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
 import { Route as AffiliateRouteImport } from './routes/affiliate'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeleteAccountRoute = DeleteAccountRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/affiliate': typeof AffiliateRoute
   '/delete-account': typeof DeleteAccountRoute
+  '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/affiliate': typeof AffiliateRoute
   '/delete-account': typeof DeleteAccountRoute
+  '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/affiliate': typeof AffiliateRoute
   '/delete-account': typeof DeleteAccountRoute
+  '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/affiliate'
     | '/delete-account'
+    | '/faq'
     | '/privacy'
     | '/sitemap.xml'
     | '/support'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/affiliate'
     | '/delete-account'
+    | '/faq'
     | '/privacy'
     | '/sitemap.xml'
     | '/support'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/affiliate'
     | '/delete-account'
+    | '/faq'
     | '/privacy'
     | '/sitemap.xml'
     | '/support'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AffiliateRoute: typeof AffiliateRoute
   DeleteAccountRoute: typeof DeleteAccountRoute
+  FaqRoute: typeof FaqRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SupportRoute: typeof SupportRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/delete-account': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AffiliateRoute: AffiliateRoute,
   DeleteAccountRoute: DeleteAccountRoute,
+  FaqRoute: FaqRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SupportRoute: SupportRoute,

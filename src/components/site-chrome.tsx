@@ -10,7 +10,6 @@ const NAV = [
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#timeline", label: "Timeline" },
   { href: "/#privacy", label: "Privacy" },
-  { href: "/#faq", label: "FAQ" },
 ];
 
 export function SocialIcons({ size = "sm", labeled = false }: { size?: "sm" | "lg"; labeled?: boolean }) {
@@ -65,6 +64,9 @@ export function Header() {
           <Link to="/blog" className="text-sm text-plum/80 hover:text-rose transition-colors">
             Blog
           </Link>
+          <Link to="/faq" className="text-sm text-plum/80 hover:text-rose transition-colors">
+            FAQ
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -106,6 +108,13 @@ export function Header() {
             >
               Blog
             </Link>
+            <Link
+              to="/faq"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-3 text-base text-plum hover:bg-petal/70"
+            >
+              FAQ
+            </Link>
           </nav>
         </div>
       )}
@@ -130,6 +139,7 @@ export function Footer() {
           <div className="flex flex-col gap-6 sm:flex-row sm:gap-12">
             <nav className="flex flex-col gap-2 text-sm">
               <Link to="/blog" className="text-plum hover:text-rose">Blog</Link>
+              <Link to="/faq" className="text-plum hover:text-rose">FAQ</Link>
               <Link to="/support" className="text-plum hover:text-rose">Support</Link>
               <Link to="/privacy" className="text-plum hover:text-rose">Privacy</Link>
               <Link to="/terms" className="text-plum hover:text-rose">Terms</Link>

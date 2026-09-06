@@ -3,7 +3,7 @@ import { contentSupabase } from "@/lib/content-supabase";
 
 const SITE_URL = "https://www.coveivf.life";
 
-const STATIC_PATHS = ["/", "/affiliate", "/delete-account", "/privacy", "/support", "/terms", "/blog"];
+const STATIC_PATHS = ["/", "/affiliate", "/delete-account", "/faq", "/privacy", "/support", "/terms", "/blog"];
 
 function escapeXml(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
