@@ -17,6 +17,7 @@ export const Route = createFileRoute("/delete-account")({
           "Permanently delete your Cove IVF account and all associated data at any time.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.coveivf.life/delete-account" }],
   }),
   component: DeleteAccount,
 });

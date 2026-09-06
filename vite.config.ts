@@ -12,4 +12,12 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Hard-pin the deploy target: the site is hosted on Vercel, so we don't rely
+  // on the wrapper's zero-config auto-detection (which falls back to
+  // cloudflare-module if detection ever fails — see the file-level comment
+  // above). Documented override path per @lovable.dev/vite-tanstack-config's
+  // own type definitions ("object: force-on, with these overrides").
+  nitro: {
+    preset: "vercel",
+  },
 });

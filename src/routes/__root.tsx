@@ -75,6 +75,31 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// TODO(og-image): once a real 1200x630 asset is supplied, host it at
+// `/og-image.png` and set OG_IMAGE_URL below — og:image/twitter:image meta
+// and Organization.logo will all pick it up automatically. Left unset for
+// now: a missing preview image beats a badly letterboxed transparent logo.
+const OG_IMAGE_URL: string | null = null;
+
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Cove IVF",
+  url: "https://www.coveivf.life/",
+  ...(OG_IMAGE_URL ? { logo: OG_IMAGE_URL } : {}),
+  sameAs: [
+    "https://www.instagram.com/cove_appp/",
+    "https://www.tiktok.com/@cove_app",
+  ],
+};
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Cove IVF",
+  url: "https://www.coveivf.life/",
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -95,6 +120,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.coveivf.life/" },
       { property: "og:site_name", content: "Cove IVF" },
+      ...(OG_IMAGE_URL
+        ? [
+            { property: "og:image", content: OG_IMAGE_URL },
+            { property: "og:image:width", content: "1200" },
+            { property: "og:image:height", content: "630" },
+          ]
+        : []),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
       {
@@ -102,6 +134,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Available now on iPhone.",
       },
+      ...(OG_IMAGE_URL ? [{ name: "twitter:image", content: OG_IMAGE_URL }] : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -140,6 +173,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
+      />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Analytics />

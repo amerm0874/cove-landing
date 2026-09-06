@@ -9,6 +9,7 @@ export const Route = createFileRoute("/terms")({
       { property: "og:title", content: "Terms of Service — Cove IVF" },
       { property: "og:description", content: "Cove IVF is an organizational tool, not a medical device. Read the terms." },
     ],
+    links: [{ rel: "canonical", href: "https://www.coveivf.life/terms" }],
   }),
   component: Terms,
 });

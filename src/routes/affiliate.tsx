@@ -22,6 +22,7 @@ export const Route = createFileRoute("/affiliate")({
         content: "20% of paid Cove Pro from your code. Codes are issued by email after review.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.coveivf.life/affiliate" }],
   }),
   component: Affiliate,
 });

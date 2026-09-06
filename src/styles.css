@@ -179,6 +179,43 @@
   background: var(--blush);
 }
 
+/* Blog post body — sanitized markdown HTML, styled with the site's own tokens
+   (no @tailwindcss/typography dependency). */
+.blog-body { color: color-mix(in srgb, var(--plum) 85%, transparent); line-height: 1.75; }
+.blog-body > * + * { margin-top: 1.25em; }
+.blog-body h1, .blog-body h2, .blog-body h3, .blog-body h4 {
+  font-family: var(--font-display);
+  color: var(--plum);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 1.75em;
+}
+.blog-body h1 { font-size: 1.875rem; }
+.blog-body h2 { font-size: 1.5rem; }
+.blog-body h3 { font-size: 1.25rem; }
+.blog-body p { margin-top: 1.25em; }
+.blog-body a { color: var(--rose); text-decoration: underline; text-underline-offset: 2px; }
+.blog-body a:hover { color: var(--rose-deep); }
+.blog-body strong { color: var(--plum); font-weight: 700; }
+.blog-body ul, .blog-body ol { margin-top: 1.25em; padding-left: 1.5em; }
+.blog-body ul { list-style: disc; }
+.blog-body ol { list-style: decimal; }
+.blog-body li + li { margin-top: 0.5em; }
+.blog-body blockquote {
+  border-left: 3px solid var(--line);
+  padding-left: 1em;
+  color: var(--muted);
+  font-style: italic;
+}
+.blog-body img { border-radius: var(--radius-lg); }
+.blog-body code {
+  font-family: var(--font-mono);
+  background: var(--petal);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+  font-size: 0.9em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blob-a, .blob-b, .blob-c, .blob-d,
   .row-in, .ring-tick, .fade-up, .slide-in-soft, .pulse-soft,

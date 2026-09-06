@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Check, ChevronDown, ShieldCheck, HeartHandshake, Stethoscope, Smartphone } from "lucide-react";
 import { BackgroundBlobs, Footer, Header, SocialIcons } from "@/components/site-chrome";
 import {
@@ -14,6 +14,7 @@ import {
 } from "@/components/chapters";
 import { Reveal } from "@/components/reveal";
 import { APP_STORE_URL } from "@/lib/constants";
+import { joinAndroidWaitlist } from "@/lib/android-waitlist";
 import todayScreen from "@/assets/app/today.png";
 
 export const Route = createFileRoute("/")({
@@ -242,7 +243,69 @@ function DownloadCta() {
       <p className="mt-6 text-sm text-muted">
         Encrypted on your device. Never sold, never shared.
       </p>
+      <div className="mt-10 flex justify-center"><AndroidWaitlistForm /></div>
       <div className="mt-10 flex justify-center"><SocialIcons size="lg" labeled /></div>
     </section>
+  );
+}
+
+function AndroidWaitlistForm() {
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  async function onSubmit(event: FormEvent) {
+    event.preventDefault();
+    setError("");
+    setSubmitting(true);
+
+    try {
+      const result = await joinAndroidWaitlist({ data: { email } });
+      if (result.ok) {
+        setSubmitted(true);
+        return;
+      }
+      setError(result.error);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (submitted) {
+    return <p className="text-sm font-semibold text-plum">You&apos;re on the list.</p>;
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">
+        Android coming soon — get notified when it launches
+      </p>
+      <form onSubmit={onSubmit} className="flex w-full max-w-sm flex-col gap-2 sm:flex-row">
+        <label htmlFor="android-waitlist-email" className="sr-only">
+          Email
+        </label>
+        <input
+          id="android-waitlist-email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="you@email.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="flex-1 rounded-full border border-line bg-white px-5 py-2.5 text-sm text-plum focus:border-rose focus:outline-none"
+        />
+        <button
+          type="submit"
+          disabled={submitting}
+          className="rounded-full bg-plum px-5 py-2.5 text-sm font-semibold text-blush transition-colors hover:bg-plum-soft disabled:opacity-60"
+        >
+          {submitting ? "Sending…" : "Notify me"}
+        </button>
+      </form>
+      {error && <p className="text-sm text-coral">{error}</p>}
+    </div>
   );
 }

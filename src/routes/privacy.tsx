@@ -9,6 +9,7 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy — Cove IVF" },
       { property: "og:description", content: "Plain-language privacy policy for the Cove IVF app and website." },
     ],
+    links: [{ rel: "canonical", href: "https://www.coveivf.life/privacy" }],
   }),
   component: Privacy,
 });

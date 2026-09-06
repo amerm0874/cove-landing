@@ -62,6 +62,9 @@ export function Header() {
               {n.label}
             </a>
           ))}
+          <Link to="/blog" className="text-sm text-plum/80 hover:text-rose transition-colors">
+            Blog
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -96,6 +99,13 @@ export function Header() {
                 {n.label}
               </a>
             ))}
+            <Link
+              to="/blog"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-3 text-base text-plum hover:bg-petal/70"
+            >
+              Blog
+            </Link>
           </nav>
         </div>
       )}
@@ -119,6 +129,7 @@ export function Footer() {
           </div>
           <div className="flex flex-col gap-6 sm:flex-row sm:gap-12">
             <nav className="flex flex-col gap-2 text-sm">
+              <Link to="/blog" className="text-plum hover:text-rose">Blog</Link>
               <Link to="/support" className="text-plum hover:text-rose">Support</Link>
               <Link to="/privacy" className="text-plum hover:text-rose">Privacy</Link>
               <Link to="/terms" className="text-plum hover:text-rose">Terms</Link>

@@ -12,6 +12,7 @@ export const Route = createFileRoute("/support")({
       { property: "og:title", content: "Support — Cove IVF" },
       { property: "og:description", content: "Questions, feedback, or trouble with the app? We read every message." },
     ],
+    links: [{ rel: "canonical", href: "https://www.coveivf.life/support" }],
   }),
   component: Support,
 });
