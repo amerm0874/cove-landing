@@ -1,2 +1,2 @@
-export const APP_STORE_URL = "https://apps.apple.com/app/id6788749556";
+export const APP_STORE_URL = "https://cove.onelink.me/lzsv/web";
 export const CONTACT_EMAIL = "coveivf@gmail.com";
