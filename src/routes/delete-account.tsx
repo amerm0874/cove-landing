@@ -54,10 +54,10 @@ function DeleteAccount() {
         </OL>
 
         <P>
-          <strong>What gets deleted:</strong> This permanently removes your account and all
-          associated data — including your cycles, medications, doses, appointments, injection
-          logs, and profile. This action cannot be undone. No personal data is retained after
-          deletion.
+          <strong>What gets deleted:</strong> This permanently removes your account and associated
+          data — cycles, medications, doses, appointments, injection logs, journal entries,
+          uploaded Blood Work PDFs, and your profile. Apple or Google may still keep a record of
+          the subscription itself. This action cannot be undone.
         </P>
 
         <P>
