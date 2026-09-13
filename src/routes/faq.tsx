@@ -39,7 +39,7 @@ const FAQS = [
   },
   {
     q: "Is my data private?",
-    a: "Cove is designed to be encrypted in transit and at rest. We do not sell your information and do not share it with advertisers, and the app is built without third-party advertising trackers. You can permanently delete your account and its data from within the app at any time. Protocol-sheet photos are processed to read your schedule and are not retained after processing. See the full privacy policy for details — it is currently a plain-language draft under review by a privacy attorney ahead of launch.",
+    a: "Your treatment details stay private, encrypted, never sold, never shared for advertising. Cove uses a measurement tool (AppsFlyer) that collects device and campaign data to understand which ads brought you to the app. It does not receive your medications, labs, or journal. We do not show ads inside the app. You can permanently delete your account and its data from within the app at any time. Protocol-sheet photos are processed to read your schedule and are not retained after processing. See the full privacy policy for details.",
   },
   {
     q: "How much does it cost?",

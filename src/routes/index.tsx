@@ -50,11 +50,11 @@ const TRUST = [
 const PRIVACY_INTRO = "Privacy isn't a feature we bolt on — it's how we're building Cove from day one.";
 
 const PRIVACY = [
-  { title: "Built to be encrypted", body: "Your data will be encrypted in transit and at rest." },
-  { title: "Never sold, never shared", body: "We will never sell your information or share it with advertisers." },
-  { title: "No ad trackers in the app", body: "Cove is being built without advertising SDKs, and your health data will never be used to target ads." },
-  { title: "You'll stay in control", body: "You'll be able to delete your data permanently, anytime, in one tap." },
-  { title: "Discreet by design", body: "We're designing lock-screen notifications that never name your medications." },
+  { title: "Built to be encrypted", body: "Your data is encrypted in transit and at rest." },
+  { title: "Never sold for advertising", body: "Your treatment details are never sold, and never shared for advertising." },
+  { title: "No ads inside Cove", body: "We don't show ads inside Cove, and your treatment details are never used for advertising." },
+  { title: "You'll stay in control", body: "You can delete your data permanently, anytime, in one tap." },
+  { title: "Discreet by design", body: "Lock-screen notifications don't name your medications unless you turn that on." },
 ];
 
 const FAQ = [
@@ -241,7 +241,7 @@ function DownloadCta() {
         </a>
       </div>
       <p className="mt-6 text-sm text-muted">
-        Encrypted on your device. Never sold, never shared.
+        Encrypted in transit and at rest. Treatment details are never sold or used for ads.
       </p>
       <div className="mt-10 flex justify-center"><AndroidWaitlistForm /></div>
       <div className="mt-10 flex justify-center"><SocialIcons size="lg" labeled /></div>
