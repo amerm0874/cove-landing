@@ -37,13 +37,16 @@ function Privacy() {
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
         <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Legal</p>
         <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">Privacy Policy</h1>
-        <p className="mt-3 font-mono-tnum text-sm text-muted">Last updated: September 10, 2026</p>
+        <p className="mt-3 font-mono-tnum text-sm text-muted">Last updated: September 13, 2026</p>
 
         <H2>The short version</H2>
         <P>
-          Cove helps you organize an IVF cycle. Your health information is yours. We do not sell it,
-          we do not use it to target ads, and you can delete it — including uploaded lab PDFs —
-          from Settings in the app. This policy explains what we collect, why, and the choices you have.
+          Cove helps you organize an IVF cycle. Your treatment details stay private, encrypted, never
+          sold, never shared for advertising. You can delete them — including uploaded lab PDFs —
+          from Settings in the app. Cove uses a measurement tool (AppsFlyer) that collects device and
+          campaign data to understand which ads brought you to the app. It does not receive your
+          medications, labs, or journal. This policy explains what we collect, why, and the choices
+          you have.
         </P>
 
         <H2>Who we are</H2>
@@ -104,11 +107,36 @@ function Privacy() {
             not your name.
           </li>
           <li>
-            <strong>AppsFlyer (install attribution):</strong> we use AppsFlyer to understand which
-            link, ad, or partner brought you to the app — for example a creator code or an App Store
-            campaign. This can include a device identifier used for attribution. We do not show ads
-            inside Cove. We do not send your medication schedule, lab PDFs, or journal text to
-            AppsFlyer. We do not sell health information to advertisers.
+            <strong>AppsFlyer (advertising measurement):</strong> Cove uses a measurement tool
+            (AppsFlyer), a mobile measurement partner, to understand which ads brought you to the
+            app. We do not show ads inside Cove.
+            <P>What it may collect:</P>
+            <UL>
+              <li>
+                Device identifiers, including Apple's IDFA (only if you allow tracking), Apple's
+                IDFV, and on Android an advertising ID
+              </li>
+              <li>
+                Campaign and attribution data (which ad, link, creator code, or App Store campaign
+                led to an install)
+              </li>
+              <li>
+                In-app conversion events that are not health data — for example completing signup,
+                viewing a paywall, starting a trial, or subscribing
+              </li>
+            </UL>
+            <P>
+              On iOS this is "tracking" under Apple's App Tracking Transparency (ATT) rules. You
+              will see Apple's prompt, and you can tap Ask App Not to Track. You can also change
+              this later in iOS Settings → Privacy & Security → Tracking. If you decline, we do not
+              use IDFA. Limited Apple install measurement (SKAdNetwork) and non-IDFA conversion
+              events may still run. PostHog (product analytics) is not gated by this prompt.
+            </P>
+            <P>
+              Your treatment details stay private. AppsFlyer does not receive your medications,
+              labs, or journal. Health and treatment data are not shared with AppsFlyer or any
+              advertising partner.
+            </P>
           </li>
           <li>
             <strong>Apple Search Ads / App Store attribution:</strong> on iOS we may collect Apple's
@@ -136,7 +164,7 @@ function Privacy() {
           <li>To provide the app: build your schedule, send reminders, store and display what you log.</li>
           <li>To run capture features (photo, voice, Blood Work PDF) and show you drafts to review.</li>
           <li>To process subscriptions through Apple (and Google Play where available) and RevenueCat.</li>
-          <li>To operate, secure, and improve the service, including measuring which channels bring people to Cove (AppsFlyer).</li>
+          <li>To operate, secure, and improve the service, including using a measurement tool (AppsFlyer) to understand which ads brought you to the app.</li>
           <li>To contact you about the product (for example a product update, support reply, or a short-lived offer after a paywall or cancelled trial). You can opt out of non-essential emails in the app where that control exists.</li>
         </UL>
 
@@ -165,6 +193,13 @@ function Privacy() {
           <li>
             <strong>Lock-screen privacy:</strong> you can hide medication names on lock-screen
             reminders in Settings → Notifications.
+          </li>
+          <li>
+            <strong>App Tracking (iOS):</strong> Cove may ask for permission to track so AppsFlyer
+            can use a device identifier (IDFA) to understand which ads brought you to the app. It
+            is not used for medical care or reminders. You can decline the prompt, or turn tracking
+            off later in iOS Settings → Privacy & Security → Tracking. Declining does not delete
+            your account or your cycle data.
           </li>
         </UL>
         <P>
@@ -197,7 +232,11 @@ function Privacy() {
           <li>RevenueCat — subscription status</li>
           <li>Anthropic — reading protocol photos, voice drafts, and Blood Work PDFs into cards you review</li>
           <li>PostHog — product analytics (no health contents)</li>
-          <li>AppsFlyer — install and campaign attribution</li>
+          <li>
+            AppsFlyer — measurement tool for advertising: device identifiers, campaign/attribution
+            data, and non-health conversion events. It does not receive your medications, labs, or
+            journal.
+          </li>
           <li>Expo — delivering push notifications</li>
           <li>Resend — sending support email and, when enabled, transactional product email</li>
         </UL>
