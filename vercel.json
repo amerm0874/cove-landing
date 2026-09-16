@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/blog/cove-vs-berry-fertility-which-ivf-tracker-fits-you",
+      "destination": "/blog/what-to-look-for-in-an-ivf-tracker",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cove-vs-embie-ivf-tracking-apps-compared",
+      "destination": "/blog/embie-alternative-ivf-tracker",
+      "statusCode": 301
+    }
+  ]
+}
