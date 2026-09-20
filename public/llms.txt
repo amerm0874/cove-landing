@@ -39,7 +39,7 @@ Cove is built for people actively going through an IVF cycle (including ICSI and
 
 - **iOS**: live now on the Apple App Store.
 - **Android**: not yet available; there is a waitlist on coveivf.life for launch notification.
-- **Pricing**: $12.99/month, or $8.33/month when billed every 6 months. A free trial is offered before the subscription starts.
+- **Pricing**: Cove Premium is $12.99/month, $39.99 every 6 months, or $64.99/year. The annual plan includes a 3-day free trial. Prices are in USD and may vary by country.
 
 ## Privacy
 

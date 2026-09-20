@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "How much does it cost?",
-    a: "Cove is $12.99/month, or $8.33/month when you choose the plan billed every 6 months. A free trial is offered before either subscription starts.",
+    a: "Cove Premium is $12.99/month, $39.99 every 6 months, or $64.99/year. The annual plan includes a 3-day free trial. Prices are in USD and may vary by country.",
   },
   {
     q: "Is there an Android version?",

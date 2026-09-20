@@ -3,4 +3,4 @@ Allow: /
 
 Sitemap: https://www.coveivf.life/sitemap.xml
 # llms.txt: machine-readable summary for AI assistants - https://llmstxt.org
-Llms.txt: https://www.coveivf.life/llms.txt
+# https://www.coveivf.life/llms.txt

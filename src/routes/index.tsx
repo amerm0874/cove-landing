@@ -145,7 +145,7 @@ function Hero() {
       </div>
 
       <p className="mt-4 font-mono-tnum text-[11px] uppercase tracking-widest text-muted">
-        Available now on iPhone · Free to start
+        Available now on iPhone · 3-day free trial on annual
       </p>
 
       <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/60 px-4 py-2 font-mono-tnum text-[10px] uppercase tracking-widest text-plum/70">
@@ -253,7 +253,7 @@ function DownloadCta() {
     <section id="download" className="mx-auto max-w-3xl px-5 pt-24 pb-12 text-center sm:px-8">
       <h2 className="font-display text-4xl font-semibold sm:text-5xl">A calm harbor for your cycle is ready.</h2>
       <p className="mt-5 text-lg text-plum/80">
-        Available now on iPhone. Free to start.
+        Available now on iPhone. Try free for 3 days on the annual plan.
       </p>
       <div className="mt-8 flex justify-center">
         <a
