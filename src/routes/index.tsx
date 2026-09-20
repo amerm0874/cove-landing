@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SITE_URL, pageHead } from "@/lib/seo";
+import { APP_STORE_LISTING_URL, ORGANIZATION_SCHEMA, SITE_URL, pageHead } from "@/lib/seo";
 import { useState, type FormEvent } from "react";
 import { Check, ChevronDown, ShieldCheck, HeartHandshake, Stethoscope, Smartphone } from "lucide-react";
 import { BackgroundBlobs, Footer, Header, SocialIcons } from "@/components/site-chrome";
@@ -29,21 +29,31 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
-const SOFTWARE_APPLICATION_SCHEMA = {
+const ORGANIZATION_JSONLD = { "@context": "https://schema.org", ...ORGANIZATION_SCHEMA };
+
+const WEBSITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Cove IVF",
+  url: `${SITE_URL}/`,
+};
+
+const SOFTWARE_APPLICATION_JSONLD = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Cove IVF Tracker",
+  name: "COVE: IVF Tracker & Injections",
   operatingSystem: "iOS",
   applicationCategory: "HealthApplication",
   description:
     "Calm IVF tracker and medication companion. Protocol scanner, exact medication lineups, dose tracking, and discreet reminders for IVF cycles.",
-  url: "https://www.coveivf.life/",
-  downloadUrl: APP_STORE_URL,
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
+  url: `${SITE_URL}/`,
+  downloadUrl: APP_STORE_LISTING_URL,
+  publisher: ORGANIZATION_SCHEMA,
+  offers: [
+    { "@type": "Offer", name: "Monthly", price: "12.99", priceCurrency: "USD" },
+    { "@type": "Offer", name: "6 months", price: "39.99", priceCurrency: "USD" },
+    { "@type": "Offer", name: "Annual", price: "64.99", priceCurrency: "USD" },
+  ],
 };
 
 const TRUST = [
@@ -73,7 +83,15 @@ function Landing() {
     <div className="relative min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_APPLICATION_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSONLD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_APPLICATION_JSONLD) }}
       />
       <BackgroundBlobs />
       <Header />

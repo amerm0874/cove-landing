@@ -13,7 +13,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { APPLE_APP_ID, OG_IMAGE_URL } from "../lib/seo";
+import { APPLE_APP_ID } from "../lib/seo";
 import { NotFound } from "../components/not-found";
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
@@ -53,25 +53,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     </div>
   );
 }
-
-const ORGANIZATION_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Cove IVF",
-  url: "https://www.coveivf.life/",
-  logo: OG_IMAGE_URL,
-  sameAs: [
-    "https://www.instagram.com/cove_appp/",
-    "https://www.tiktok.com/@cove_app",
-  ],
-};
-
-const WEBSITE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Cove IVF",
-  url: "https://www.coveivf.life/",
-};
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   // Only the meta that is genuinely site-wide lives here. Every route supplies
@@ -121,14 +102,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
-      />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Analytics />

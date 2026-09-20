@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 import { getPublishedPostBySlug, type PostDetail } from "@/lib/blog";
-import { OG_IMAGE_URL, SITE_URL, pageHead } from "@/lib/seo";
+import { ORGANIZATION_SCHEMA, OG_IMAGE_URL, SITE_URL, pageHead } from "@/lib/seo";
 import { NotFound } from "@/components/not-found";
 
 // Site-wide preview image for posts that don't ship their own artwork. A post's
@@ -44,9 +44,9 @@ function articleSchema(post: PostDetail) {
     datePublished: post.published_at,
     dateModified: post.updated_at,
     ...(image ? { image } : {}),
-    author: { "@type": "Organization", name: "Cove IVF" },
-    publisher: { "@type": "Organization", name: "Cove IVF" },
-    mainEntityOfPage: `https://www.coveivf.life/blog/${post.slug}`,
+    author: ORGANIZATION_SCHEMA,
+    publisher: ORGANIZATION_SCHEMA,
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
   };
 }
 

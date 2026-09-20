@@ -59,3 +59,24 @@ export function pageHead({
     links: [{ rel: "canonical", href: url }],
   };
 }
+
+export const LOGO_URL = `${SITE_URL}/logo.png`;
+
+/** The App Store listing itself, as opposed to the OneLink smart link. */
+export const APP_STORE_LISTING_URL = `https://apps.apple.com/app/id${APPLE_APP_ID}`;
+
+/**
+ * Publisher identity, embedded by the JSON-LD blocks that need it. Rendered
+ * standalone only on the homepage — a 404 shouldn't claim to be the org page.
+ */
+export const ORGANIZATION_SCHEMA = {
+  "@type": "Organization",
+  name: "Cove IVF",
+  url: `${SITE_URL}/`,
+  logo: { "@type": "ImageObject", url: LOGO_URL },
+  sameAs: [
+    "https://www.instagram.com/cove_appp/",
+    "https://www.tiktok.com/@cove_app",
+    APP_STORE_LISTING_URL,
+  ],
+};
