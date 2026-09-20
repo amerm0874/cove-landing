@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { useState, type FormEvent } from "react";
 import { Check, ChevronDown, ShieldCheck, HeartHandshake, Stethoscope, Smartphone } from "lucide-react";
 import { BackgroundBlobs, Footer, Header, SocialIcons } from "@/components/site-chrome";
@@ -18,9 +19,13 @@ import { joinAndroidWaitlist } from "@/lib/android-waitlist";
 import todayScreen from "@/assets/app/today.png";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone",
+      description:
+        "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
+      url: `${SITE_URL}/`,
+    }),
   component: Landing,
 });
 

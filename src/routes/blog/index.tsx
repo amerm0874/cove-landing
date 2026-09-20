@@ -1,25 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 import { getPublishedPosts } from "@/lib/blog";
 
 export const Route = createFileRoute("/blog/")({
   loader: () => getPublishedPosts(),
-  head: () => ({
-    meta: [
-      { title: "Blog — Cove IVF" },
-      {
-        name: "description",
-        content: "Notes on IVF cycles, medication tracking, and building a calmer treatment process.",
-      },
-      { property: "og:title", content: "Blog — Cove IVF" },
-      {
-        property: "og:description",
-        content: "Notes on IVF cycles, medication tracking, and building a calmer treatment process.",
-      },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/blog" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Blog — Cove IVF",
+      description: "Notes on IVF cycles, medication tracking, and building a calmer treatment process.",
+      url: `${SITE_URL}/blog`,
+    }),
   component: BlogIndex,
 });
 

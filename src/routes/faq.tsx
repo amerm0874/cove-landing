@@ -1,26 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 import { FaqList } from "./index";
 
 export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: "FAQ — Cove IVF Tracker" },
-      {
-        name: "description",
-        content:
-          "Answers about what Cove is, whether it tracks IVF medications and injections, pricing, Android availability, privacy, and how it differs from general fertility trackers.",
-      },
-      { property: "og:title", content: "FAQ — Cove IVF Tracker" },
-      {
-        property: "og:description",
-        content:
-          "Answers about what Cove is, whether it tracks IVF medications and injections, pricing, Android availability, privacy, and how it differs from general fertility trackers.",
-      },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/faq" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "FAQ — Cove IVF Tracker",
+      description:
+        "Answers about what Cove is, whether it tracks IVF medications and injections, pricing, Android availability, privacy, and how it differs from general fertility trackers.",
+      url: `${SITE_URL}/faq`,
+    }),
   component: FaqPage,
 });
 

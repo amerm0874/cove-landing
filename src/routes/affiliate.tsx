@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { useState, type FormEvent } from "react";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 import { CONTACT_EMAIL } from "@/lib/constants";
@@ -8,22 +9,13 @@ import {
 } from "@/lib/submit-affiliate";
 
 export const Route = createFileRoute("/affiliate")({
-  head: () => ({
-    meta: [
-      { title: "Cove Affiliate — Cove IVF" },
-      {
-        name: "description",
-        content:
-          "Cove affiliate program: 20% of paid Cove Pro from your code. Codes are issued manually. Apply by email.",
-      },
-      { property: "og:title", content: "Cove Affiliate — Cove IVF" },
-      {
-        property: "og:description",
-        content: "20% of paid Cove Pro from your code. Codes are issued by email after review.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/affiliate" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Cove Affiliate — Cove IVF",
+      description:
+        "Cove affiliate program: 20% of paid Cove Pro from your code. Codes are issued manually. Apply by email.",
+      url: `${SITE_URL}/affiliate`,
+    }),
   component: Affiliate,
 });
 

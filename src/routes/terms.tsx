@@ -1,16 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/terms")({
-  head: () => ({
-    meta: [
-      { title: "Terms of Service — Cove IVF" },
-      { name: "description", content: "The terms that govern your use of the Cove IVF app and website." },
-      { property: "og:title", content: "Terms of Service — Cove IVF" },
-      { property: "og:description", content: "Cove IVF is an organizational tool, not a medical device. Read the terms." },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/terms" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Terms of Service — Cove IVF",
+      description: "The terms that govern your use of the Cove IVF app and website.",
+      url: `${SITE_URL}/terms`,
+    }),
   component: Terms,
 });
 

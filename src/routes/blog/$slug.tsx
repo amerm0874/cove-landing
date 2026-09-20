@@ -1,11 +1,12 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 import { getPublishedPostBySlug, type PostDetail } from "@/lib/blog";
+import { OG_IMAGE_URL, SITE_URL, pageHead } from "@/lib/seo";
+import { NotFound } from "@/components/not-found";
 
-// TODO(og-image): site-wide fallback intentionally unset until a real
-// 1200x630 asset is supplied (see __root.tsx). A post's own `og_image_url`
-// still overrides this whenever one is set on the row.
-const DEFAULT_OG_IMAGE: string | null = null;
+// Site-wide preview image for posts that don't ship their own artwork. A post's
+// `og_image_url` still overrides this whenever one is set on the row.
+const DEFAULT_OG_IMAGE: string = OG_IMAGE_URL;
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -15,29 +16,22 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     return post;
   },
-  head: ({ loaderData }) => {
-    if (!loaderData) {
-      return {};
-    }
-    const ogImage = loaderData.og_image_url ?? DEFAULT_OG_IMAGE;
-    return {
-      meta: [
-        { title: `${loaderData.title} — Cove IVF` },
-        { name: "description", content: loaderData.description },
-        { property: "og:title", content: `${loaderData.title} — Cove IVF` },
-        { property: "og:description", content: loaderData.description },
-        { property: "og:type", content: "article" },
-        ...(ogImage
-          ? [
-              { property: "og:image", content: ogImage },
-              { name: "twitter:image", content: ogImage },
-            ]
-          : []),
-      ],
-      links: [{ rel: "canonical", href: `https://www.coveivf.life/blog/${loaderData.slug}` }],
-    };
-  },
+  // `loaderData` is always present here — the loader throws notFound() when the
+  // slug misses, and the router skips head() for a not-found render. That 404's
+  // head comes from <NotFound /> instead.
+  head: ({ loaderData }) =>
+    loaderData
+      ? pageHead({
+          title: `${loaderData.title} — Cove IVF`,
+          description: loaderData.description,
+          url: `${SITE_URL}/blog/${loaderData.slug}`,
+          type: "article",
+          image: loaderData.og_image_url ?? DEFAULT_OG_IMAGE,
+          imageAlt: loaderData.og_image_url ? loaderData.title : undefined,
+        })
+      : {},
   component: BlogPost,
+  notFoundComponent: NotFound,
 });
 
 function articleSchema(post: PostDetail) {

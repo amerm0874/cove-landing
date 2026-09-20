@@ -1,24 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/delete-account")({
-  head: () => ({
-    meta: [
-      { title: "Delete Your Cove Account — Cove IVF" },
-      {
-        name: "description",
-        content:
-          "How to permanently delete your Cove IVF account and all associated data from the app or by emailing support.",
-      },
-      { property: "og:title", content: "Delete Your Cove Account — Cove IVF" },
-      {
-        property: "og:description",
-        content:
-          "Permanently delete your Cove IVF account and all associated data at any time.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/delete-account" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Delete Your Cove Account — Cove IVF",
+      description:
+        "How to permanently delete your Cove IVF account and all associated data from the app or by emailing support.",
+      url: `${SITE_URL}/delete-account`,
+    }),
   component: DeleteAccount,
 });
 

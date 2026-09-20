@@ -1,16 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/privacy")({
-  head: () => ({
-    meta: [
-      { title: "Privacy Policy — Cove IVF" },
-      { name: "description", content: "How Cove IVF collects, uses, and protects your information." },
-      { property: "og:title", content: "Privacy Policy — Cove IVF" },
-      { property: "og:description", content: "Plain-language privacy policy for the Cove IVF app and website." },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/privacy" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Privacy Policy — Cove IVF",
+      description: "How Cove IVF collects, uses, and protects your information.",
+      url: `${SITE_URL}/privacy`,
+    }),
   component: Privacy,
 });
 

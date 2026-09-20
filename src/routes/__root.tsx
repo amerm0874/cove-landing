@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -14,28 +13,8 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-
-function NotFoundComponent() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
+import { APPLE_APP_ID, OG_IMAGE_URL } from "../lib/seo";
+import { NotFound } from "../components/not-found";
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
@@ -75,18 +54,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// TODO(og-image): once a real 1200x630 asset is supplied, host it at
-// `/og-image.png` and set OG_IMAGE_URL below — og:image/twitter:image meta
-// and Organization.logo will all pick it up automatically. Left unset for
-// now: a missing preview image beats a badly letterboxed transparent logo.
-const OG_IMAGE_URL: string | null = null;
-
 const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Cove IVF",
   url: "https://www.coveivf.life/",
-  ...(OG_IMAGE_URL ? { logo: OG_IMAGE_URL } : {}),
+  logo: OG_IMAGE_URL,
   sameAs: [
     "https://www.instagram.com/cove_appp/",
     "https://www.tiktok.com/@cove_app",
@@ -101,40 +74,15 @@ const WEBSITE_SCHEMA = {
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  // Only the meta that is genuinely site-wide lives here. Every route supplies
+  // its own title, description and og:*/twitter:* set through `pageHead`.
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
-      {
-        name: "description",
-        content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
-      },
-      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
-      {
-        property: "og:description",
-        content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.coveivf.life/" },
+      { name: "apple-itunes-app", content: `app-id=${APPLE_APP_ID}` },
       { property: "og:site_name", content: "Cove IVF" },
-      ...(OG_IMAGE_URL
-        ? [
-            { property: "og:image", content: OG_IMAGE_URL },
-            { property: "og:image:width", content: "1200" },
-            { property: "og:image:height", content: "630" },
-          ]
-        : []),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
-      {
-        name: "twitter:description",
-        content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Available now on iPhone.",
-      },
-      ...(OG_IMAGE_URL ? [{ name: "twitter:image", content: OG_IMAGE_URL }] : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -150,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   }),
   shellComponent: RootShell,
   component: RootComponent,
-  notFoundComponent: NotFoundComponent,
+  notFoundComponent: NotFound,
   errorComponent: ErrorComponent,
 });
 

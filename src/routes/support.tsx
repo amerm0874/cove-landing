@@ -1,19 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL, pageHead } from "@/lib/seo";
 import { useState, type FormEvent } from "react";
 import { Mail } from "lucide-react";
 import { BackgroundBlobs, Footer, Header, SocialIcons } from "@/components/site-chrome";
 import { FaqList } from "./index";
 
 export const Route = createFileRoute("/support")({
-  head: () => ({
-    meta: [
-      { title: "Support — Cove IVF" },
-      { name: "description", content: "Get help with Cove IVF. Contact support, FAQs, and account controls." },
-      { property: "og:title", content: "Support — Cove IVF" },
-      { property: "og:description", content: "Questions, feedback, or trouble with the app? We read every message." },
-    ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/support" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Support — Cove IVF",
+      description: "Get help with Cove IVF. Contact support, FAQs, and account controls.",
+      url: `${SITE_URL}/support`,
+    }),
   component: Support,
 });
 
