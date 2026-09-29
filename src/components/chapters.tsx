@@ -116,7 +116,7 @@ export function ChapterMedication() {
       eyebrow={c.eyebrow}
       headline={c.headline}
       body={c.body}
-      media={<img src={injectionsScreen} alt={c.alt} className="mx-auto w-full max-w-[300px]" width={763} height={1652} />}
+      media={<img src={injectionsScreen} alt={c.alt} className="mx-auto w-full max-w-[300px]" width={763} height={1652} loading="lazy" decoding="async" />}
     />
   );
 }
@@ -151,7 +151,7 @@ export function ChapterTimeline() {
       eyebrow={c.eyebrow}
       headline={c.headline}
       body={c.body}
-      media={<img src={stagesScreen} alt={c.alt} className="mx-auto w-full max-w-[300px]" width={763} height={1652} />}
+      media={<img src={stagesScreen} alt={c.alt} className="mx-auto w-full max-w-[300px]" width={763} height={1652} loading="lazy" decoding="async" />}
     />
   );
 }

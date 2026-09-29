@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { getPublishedPosts } from "@/lib/blog";
-import { canonicalLink, hreflangLinks, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, hreflangLinks, pageMeta } from "@/lib/seo";
 import { getDictionary, useLocale, useT } from "@/i18n";
-import { DEFAULT_LOCALE, isLocale, LOCALE_HTML_LANG, type Locale } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALE_HTML_LANG, type Locale } from "@/i18n/config";
 
 function localeOf(params: { locale?: string }): Locale {
   return isLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
@@ -36,12 +37,27 @@ function BlogIndex() {
   const active = useLocale();
   const locale = active === DEFAULT_LOCALE ? undefined : active;
 
+  const crumbs = [
+    { label: t.nav.home, path: localizedPath("/", active), to: "/{-$locale}" as const },
+    { label: t.nav.blog, path: localizedPath("/blog", active) },
+  ];
+
   return (
     <div className="relative min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema(crumbs.map(({ label, path }) => ({ name: label, path })))),
+        }}
+      />
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">{t.blog.eyebrow}</p>
+        <Breadcrumbs
+          label={t.nav.breadcrumb}
+          items={crumbs.map(({ label, to }) => ({ label, to, params: to ? { locale } : undefined }))}
+        />
+        <p className="mt-4 font-mono-tnum text-[11px] uppercase tracking-widest text-muted">{t.blog.eyebrow}</p>
         <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">{t.blog.heading}</h1>
         <p className="mt-5 max-w-2xl text-lg text-plum/80">{t.blog.intro}</p>
 

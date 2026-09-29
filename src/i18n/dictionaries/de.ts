@@ -19,6 +19,8 @@ export const de: Dictionary = {
   },
 
   nav: {
+    home: "Startseite",
+    breadcrumb: "Navigationspfad",
     features: "Funktionen",
     howItWorks: "So funktioniert’s",
     timeline: "Verlauf",
@@ -56,21 +58,21 @@ export const de: Dictionary = {
 
   meta: {
     home: {
-      title: "Cove IVF-Tracker — Medikamenten- & Zyklus-Tracker bei Kinderwunsch | iOS & Android",
+      title: "Cove IVF-Tracker — Medikamente & Zyklus | iOS & Android",
       description:
-        "Der ruhige IVF-Tracker für deinen ganzen Zyklus. Fotografiere dein Protokoll und erhalte genaue Medikamentenlisten, Dosisänderungen und diskrete Erinnerungen. Privat, verschlüsselt, für echte Kinderwunsch-Patientinnen. Jetzt für iPhone und Android.",
+        "Der ruhige IVF-Tracker für deinen ganzen Zyklus. Fotografiere dein Protokoll und erhalte genaue Medikamentenlisten, Dosisänderungen und diskrete Erinnerungen.",
     },
     features: {
       title: "Funktionen — Cove IVF-Tracker",
       description:
-        "Jede Cove-Funktion: Protokoll-Scanner, Medikamentenliste für heute Abend, Auslösespritzen-Wecker, Termine, Monitoring, Embryonen, Tagebuch und Mit KI hinzufügen. Privat, verschlüsselt, für iPhone und Android.",
+        "Jede Cove-Funktion: Protokoll-Scanner, Medikamentenliste für heute Abend, Auslösespritzen-Wecker, Termine, Monitoring, Embryonen und Tagebuch.",
       ogDescription:
         "Fotografiere dein Protokoll, behalte die heutige Liste, sichere die Auslösespritze und halte den Rest des Zyklus verschlüsselt an einem Ort.",
     },
     faq: {
       title: "FAQ — Cove IVF-Tracker",
       description:
-        "Antworten dazu, was Cove ist, ob es IVF-Medikamente und -Spritzen erfasst, zu Preis, Android-Verfügbarkeit, Datenschutz und wie es sich von allgemeinen Zyklus-Apps unterscheidet.",
+        "Antworten dazu, was Cove ist, ob es IVF-Medikamente und -Spritzen erfasst, zu Preis, Android-Verfügbarkeit, Datenschutz und Abgrenzung zu Zyklus-Apps.",
     },
     support: {
       title: "Support — Cove IVF",

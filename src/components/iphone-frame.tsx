@@ -85,7 +85,15 @@ export function IPhoneScreenshot({
           <div className="pointer-events-none absolute left-1/2 top-2 z-30 -translate-x-1/2">
             <div className="h-[26px] w-[100px] rounded-full bg-black" />
           </div>
-          <img src={src} alt={alt} className="relative z-10 h-full w-full object-cover object-top" />
+          <img
+            src={src}
+            alt={alt}
+            className="relative z-10 h-full w-full object-cover object-top"
+            width={1179}
+            height={2556}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </div>

@@ -79,7 +79,7 @@ function Hero() {
           {t.common.download}
         </a>
         <a href={GOOGLE_PLAY_URL} className="inline-flex items-center">
-          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-11 w-auto" width={646} height={250} />
+          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-11 w-auto" width={646} height={250} decoding="async" />
         </a>
         <Link
           to="/{-$locale}"
@@ -138,14 +138,14 @@ function Spotlight() {
             <article className="rounded-[28px] border border-line bg-white/70 p-6">
               <h3 className="font-display text-xl font-semibold text-plum">{second.title}</h3>
               <p className="mt-2 text-sm text-plum/80">{second.body}</p>
-              <img src={secondSrc} alt={second.alt} className="mx-auto mt-5 w-full max-w-[180px]" width={763} height={1652} />
+              <img src={secondSrc} alt={second.alt} className="mx-auto mt-5 w-full max-w-[180px]" width={763} height={1652} loading="lazy" decoding="async" />
             </article>
           </Reveal>
           <Reveal delay={140}>
             <article className="rounded-[28px] border border-sage/30 bg-sage-soft/70 p-6">
               <h3 className="font-display text-xl font-semibold text-plum">{third.title}</h3>
               <p className="mt-2 text-sm text-plum/80">{third.body}</p>
-              <img src={thirdSrc} alt={third.alt} className="mx-auto mt-5 w-full max-w-[180px]" width={763} height={1652} />
+              <img src={thirdSrc} alt={third.alt} className="mx-auto mt-5 w-full max-w-[180px]" width={763} height={1652} loading="lazy" decoding="async" />
             </article>
           </Reveal>
         </div>
@@ -203,10 +203,10 @@ function FeatureGrid({ items }: { items: FeatureCategory["items"] }) {
 
 function categoryMedia(id: string) {
   if (id === "medications") {
-    return <img src={injectionsScreen} alt="" aria-hidden className="w-full max-w-[240px]" width={763} height={1652} />;
+    return <img src={injectionsScreen} alt="" aria-hidden className="w-full max-w-[240px]" width={763} height={1652} loading="lazy" decoding="async" />;
   }
   if (id === "cycle") {
-    return <img src={stagesScreen} alt="" aria-hidden className="w-full max-w-[240px]" width={763} height={1652} />;
+    return <img src={stagesScreen} alt="" aria-hidden className="w-full max-w-[240px]" width={763} height={1652} loading="lazy" decoding="async" />;
   }
   return null;
 }
@@ -227,7 +227,7 @@ function DownloadCta() {
           {t.common.downloadOnAppStore}
         </a>
         <a href={GOOGLE_PLAY_URL} className="inline-flex items-center">
-          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-12 w-auto" width={646} height={250} />
+          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-12 w-auto" width={646} height={250} loading="lazy" decoding="async" />
         </a>
       </div>
       <p className="mt-6 text-sm text-muted">{t.common.encryptedNote}</p>

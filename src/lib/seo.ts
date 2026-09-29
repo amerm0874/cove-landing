@@ -140,3 +140,22 @@ export const NOT_FOUND_META: HeadMeta[] = [
   { title: "Page not found — Cove IVF" },
   { name: "robots", content: "noindex" },
 ];
+
+/**
+ * BreadcrumbList JSON-LD. `trail` is ordered root-first; each entry's `path` is
+ * the ALREADY-localized path so the breadcrumb matches the page it renders on.
+ * The last entry is the current page and carries no `item`, per Google's
+ * guidance for the trailing crumb.
+ */
+export function breadcrumbSchema(trail: { name: string; path?: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      ...(crumb.path ? { item: absoluteUrl(crumb.path) } : {}),
+    })),
+  };
+}

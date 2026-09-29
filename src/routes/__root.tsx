@@ -14,7 +14,7 @@ import { LOCALE_HTML_LANG, localeDir, parseLocalePath } from "@/i18n/config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
-import { OG_IMAGE_ALT, OG_IMAGE_URL as SITE_OG_IMAGE_URL } from "@/lib/seo";
+import { LOGO_URL, OG_IMAGE_ALT, OG_IMAGE_URL as SITE_OG_IMAGE_URL, SITE_URL } from "@/lib/seo";
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { capturePostHogException, initPostHog } from "../lib/posthog";
@@ -83,12 +83,26 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 /** Site-wide preview image. Routes may override it with their own. */
 const OG_IMAGE_URL: string | null = SITE_OG_IMAGE_URL;
 
+/**
+ * `@id` so other schema blocks (Article publisher, BreadcrumbList) can point at
+ * this node instead of repeating it. `logo` must be the square-ish brand mark —
+ * Google rejects a 1200x630 social card here.
+ */
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
 const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": ORGANIZATION_ID,
   name: "Cove IVF",
-  url: "https://www.coveivf.life/",
-  ...(OG_IMAGE_URL ? { logo: OG_IMAGE_URL } : {}),
+  url: `${SITE_URL}/`,
+  logo: {
+    "@type": "ImageObject",
+    url: LOGO_URL,
+    width: 636,
+    height: 517,
+  },
+  ...(OG_IMAGE_URL ? { image: OG_IMAGE_URL } : {}),
   sameAs: [
     "https://www.instagram.com/cove_appp/",
     "https://www.tiktok.com/@cove_app",
@@ -98,8 +112,11 @@ const ORGANIZATION_SCHEMA = {
 const WEBSITE_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name: "Cove IVF",
-  url: "https://www.coveivf.life/",
+  url: `${SITE_URL}/`,
+  inLanguage: ["en", "ar", "de", "fr", "es"],
+  publisher: { "@id": ORGANIZATION_ID },
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -108,17 +125,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "apple-itunes-app", content: "app-id=6788749556" },
-      { title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android" },
+      { title: "Cove IVF Tracker — Medication & Cycle App for iOS & Android" },
       {
         name: "description",
         content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone and Android.",
+          "The calm IVF tracker for your whole cycle. Photograph your protocol for exact medication lineups, dose changes and discreet reminders. iPhone and Android.",
       },
-      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android" },
+      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle App for iOS & Android" },
       {
         property: "og:description",
         content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone and Android.",
+          "The calm IVF tracker for your whole cycle. Photograph your protocol for exact medication lineups, dose changes and discreet reminders. iPhone and Android.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Cove IVF" },
@@ -131,11 +148,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ]
         : []),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android" },
+      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle App for iOS & Android" },
       {
         name: "twitter:description",
         content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Available now on iPhone and Android.",
+          "The calm IVF tracker for your whole cycle. Photograph your protocol for exact medication lineups, dose changes and discreet reminders. iPhone and Android.",
       },
       ...(OG_IMAGE_URL ? [{ name: "twitter:image", content: OG_IMAGE_URL }] : []),
     ],

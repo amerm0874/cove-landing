@@ -19,6 +19,8 @@ export const fr: Dictionary = {
   },
 
   nav: {
+    home: "Accueil",
+    breadcrumb: "Fil d'Ariane",
     features: "Fonctionnalités",
     howItWorks: "Comment ça marche",
     timeline: "Parcours",
@@ -58,19 +60,19 @@ export const fr: Dictionary = {
     home: {
       title: "Cove — suivi FIV : médicaments et cycle | iOS et Android",
       description:
-        "Le suivi FIV serein pour tout votre cycle. Photographiez votre protocole et obtenez la liste exacte des médicaments, les changements de dose et des rappels discrets. Privé, chiffré, conçu pour de vraies patientes en FIV. Disponible sur iPhone et Android.",
+        "Le suivi FIV serein pour tout votre cycle. Photographiez votre protocole et obtenez la liste exacte des médicaments, des doses et des rappels discrets.",
     },
     features: {
       title: "Fonctionnalités — suivi FIV Cove",
       description:
-        "Toutes les fonctionnalités de Cove : scanner de protocole, liste des médicaments du soir, alarme de la piqûre de déclenchement, rendez-vous, monitorage, embryons, journal et Ajouter avec l’IA. Privé, chiffré, sur iPhone et Android.",
+        "Toutes les fonctionnalités de Cove : scanner de protocole, liste des médicaments du soir, alarme de déclenchement, rendez-vous, monitorage et embryons.",
       ogDescription:
         "Photographiez votre protocole, gardez la liste du soir, protégez la piqûre de déclenchement et réunissez le reste du cycle en un seul endroit chiffré.",
     },
     faq: {
       title: "FAQ — suivi FIV Cove",
       description:
-        "Réponses sur ce qu’est Cove, s’il suit les médicaments et injections de FIV, le prix, la disponibilité Android, la confidentialité et sa différence avec les applis de fertilité générales.",
+        "Réponses sur ce qu’est Cove, le suivi des médicaments et injections de FIV, le prix, la disponibilité Android et la confidentialité.",
     },
     support: {
       title: "Assistance — Cove IVF",

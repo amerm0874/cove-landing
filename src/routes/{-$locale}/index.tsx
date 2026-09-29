@@ -14,7 +14,14 @@ import {
 } from "@/components/chapters";
 import { Reveal } from "@/components/reveal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
-import { canonicalLink, hreflangLinks, pageMeta } from "@/lib/seo";
+import {
+  APP_STORE_LISTING_URL,
+  canonicalLink,
+  hreflangLinks,
+  OG_IMAGE_URL,
+  pageMeta,
+  SITE_URL,
+} from "@/lib/seo";
 import { getDictionary, useLocale, useT, type Dictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, type Locale } from "@/i18n/config";
 import todayScreen from "@/assets/app/today.png";
@@ -36,17 +43,28 @@ export const Route = createFileRoute("/{-$locale}/")({
   component: Landing,
 });
 
+/**
+ * `downloadUrl`/`installUrl` point at the canonical store listings, not the
+ * OneLink redirector the buttons use — structured data should resolve to a
+ * stable destination rather than a tracking hop.
+ */
 const SOFTWARE_APPLICATION_SCHEMA = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "MobileApplication",
+  "@id": `${SITE_URL}/#app`,
   name: "Cove IVF Tracker",
   operatingSystem: "iOS, Android",
   applicationCategory: "HealthApplication",
+  applicationSubCategory: "IVF medication and cycle tracker",
   description:
     "Calm IVF tracker and medication companion. Protocol scanner, exact medication lineups, dose tracking, and discreet reminders for IVF cycles.",
-  url: "https://www.coveivf.life/",
-  downloadUrl: APP_STORE_URL,
+  url: `${SITE_URL}/`,
+  image: OG_IMAGE_URL,
+  screenshot: OG_IMAGE_URL,
+  downloadUrl: [APP_STORE_LISTING_URL, GOOGLE_PLAY_URL],
+  installUrl: [APP_STORE_LISTING_URL, GOOGLE_PLAY_URL],
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 const TRUST_ICONS = [HeartHandshake, Stethoscope, ShieldCheck];
@@ -104,7 +122,7 @@ function Hero() {
           </span>
         </a>
         <a href={GOOGLE_PLAY_URL} className="inline-flex items-center">
-          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-[52px] w-auto" width={646} height={250} />
+          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-[52px] w-auto" width={646} height={250} decoding="async" />
         </a>
       </div>
 
@@ -115,7 +133,16 @@ function Hero() {
         <span>{h.badge}</span>
       </div>
 
-      <img src={todayScreen} alt={h.todayAlt} className="mx-auto mt-14 w-full max-w-[300px]" width={763} height={1652} />
+      <img
+        src={todayScreen}
+        alt={h.todayAlt}
+        className="mx-auto mt-14 w-full max-w-[300px]"
+        width={763}
+        height={1652}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+      />
     </section>
   );
 }
@@ -247,7 +274,7 @@ function DownloadCta() {
           {t.common.downloadOnAppStore}
         </a>
         <a href={GOOGLE_PLAY_URL} className="inline-flex items-center">
-          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-12 w-auto" width={646} height={250} />
+          <img src={googlePlayBadge} alt={t.common.googlePlayAlt} className="h-12 w-auto" width={646} height={250} loading="lazy" decoding="async" />
         </a>
       </div>
       <p className="mt-6 text-sm text-muted">{t.common.encryptedNote}</p>

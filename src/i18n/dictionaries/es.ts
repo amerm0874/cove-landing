@@ -19,6 +19,8 @@ export const es: Dictionary = {
   },
 
   nav: {
+    home: "Inicio",
+    breadcrumb: "Ruta de navegación",
     features: "Funciones",
     howItWorks: "Cómo funciona",
     timeline: "Recorrido",
@@ -56,21 +58,21 @@ export const es: Dictionary = {
 
   meta: {
     home: {
-      title: "Cove — seguimiento de FIV: medicación y ciclo | iOS y Android",
+      title: "Cove: seguimiento de FIV, medicación y ciclo | iOS y Android",
       description:
-        "El seguimiento de FIV tranquilo para todo tu ciclo. Fotografía tu protocolo y obtén la lista exacta de medicación, los cambios de dosis y recordatorios discretos. Privado, cifrado, hecho para pacientes reales de FIV. Ya disponible en iPhone y Android.",
+        "El seguimiento de FIV tranquilo para todo tu ciclo. Fotografía tu protocolo y obtén la lista exacta de medicación, dosis y recordatorios discretos.",
     },
     features: {
       title: "Funciones — seguimiento de FIV Cove",
       description:
-        "Todas las funciones de Cove: escáner de protocolo, lista de medicación de esta noche, alarma de la inyección desencadenante, citas, monitorización, embriones, diario y Añadir con IA. Privado, cifrado, en iPhone y Android.",
+        "Todas las funciones de Cove: escáner de protocolo, lista de medicación de esta noche, alarma de la inyección desencadenante, citas y embriones.",
       ogDescription:
         "Fotografía tu protocolo, guarda la lista de esta noche, protege la inyección desencadenante y reúne el resto del ciclo en un solo lugar cifrado.",
     },
     faq: {
       title: "Preguntas frecuentes — seguimiento de FIV Cove",
       description:
-        "Respuestas sobre qué es Cove, si registra medicación e inyecciones de FIV, precio, disponibilidad en Android, privacidad y en qué se diferencia de las apps de fertilidad generales.",
+        "Respuestas sobre qué es Cove, si registra medicación e inyecciones de FIV, precio, disponibilidad en Android y privacidad.",
     },
     support: {
       title: "Soporte — Cove IVF",

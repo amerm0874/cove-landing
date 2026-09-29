@@ -24,6 +24,8 @@ export const en = {
   },
 
   nav: {
+    home: "Home",
+    breadcrumb: "Breadcrumb",
     features: "Features",
     howItWorks: "How it works",
     timeline: "Timeline",
@@ -61,21 +63,21 @@ export const en = {
 
   meta: {
     home: {
-      title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android",
+      title: "Cove IVF Tracker — Medication & Cycle App for iOS & Android",
       description:
-        "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone and Android.",
+        "The calm IVF tracker for your whole cycle. Photograph your protocol for exact medication lineups, dose changes and discreet reminders. iPhone and Android.",
     },
     features: {
       title: "Features — Cove IVF Tracker",
       description:
-        "Every Cove feature: protocol scanner, tonight's medication lineup, trigger shot alarm, appointments, monitoring, embryos, journal, and Add with AI. Private, encrypted, on iPhone and Android.",
+        "Every Cove feature: protocol scanner, tonight's medication lineup, trigger shot alarm, appointments, monitoring, embryos and journal. iPhone and Android.",
       ogDescription:
         "Photograph your protocol, keep tonight's lineup, protect the trigger shot, and hold the rest of the cycle in one encrypted place.",
     },
     faq: {
       title: "FAQ — Cove IVF Tracker",
       description:
-        "Answers about what Cove is, whether it tracks IVF medications and injections, pricing, Android availability, privacy, and how it differs from general fertility trackers.",
+        "Answers about what Cove is, how it tracks IVF medications and injections, pricing, Android availability, privacy, and how it differs from fertility apps.",
     },
     support: {
       title: "Support — Cove IVF",
