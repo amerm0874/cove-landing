@@ -1,19 +1,23 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { LOCALE_HTML_LANG, localeDir, parseLocalePath } from "@/i18n/config";
+
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
+import { OG_IMAGE_ALT, OG_IMAGE_URL as SITE_OG_IMAGE_URL } from "@/lib/seo";
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { capturePostHogException, initPostHog } from "../lib/posthog";
 
 function NotFoundComponent() {
   return (
@@ -25,12 +29,12 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
+          <a
+            href="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
-          </Link>
+          </a>
         </div>
       </div>
     </div>
@@ -42,6 +46,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    capturePostHogException(error);
   }, [error]);
 
   return (
@@ -75,11 +80,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// TODO(og-image): once a real 1200x630 asset is supplied, host it at
-// `/og-image.png` and set OG_IMAGE_URL below — og:image/twitter:image meta
-// and Organization.logo will all pick it up automatically. Left unset for
-// now: a missing preview image beats a badly letterboxed transparent logo.
-const OG_IMAGE_URL: string | null = null;
+/** Site-wide preview image. Routes may override it with their own. */
+const OG_IMAGE_URL: string | null = SITE_OG_IMAGE_URL;
 
 const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
@@ -105,34 +107,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      { name: "apple-itunes-app", content: "app-id=6788749556" },
+      { title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android" },
       {
         name: "description",
         content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
+          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone and Android.",
       },
-      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android" },
       {
         property: "og:description",
         content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
+          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone and Android.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.coveivf.life/" },
       { property: "og:site_name", content: "Cove IVF" },
       ...(OG_IMAGE_URL
         ? [
             { property: "og:image", content: OG_IMAGE_URL },
             { property: "og:image:width", content: "1200" },
             { property: "og:image:height", content: "630" },
+            { property: "og:image:alt", content: OG_IMAGE_ALT },
           ]
         : []),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iOS & Android" },
       {
         name: "twitter:description",
         content:
-          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Available now on iPhone.",
+          "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Available now on iPhone and Android.",
       },
       ...(OG_IMAGE_URL ? [{ name: "twitter:image", content: OG_IMAGE_URL }] : []),
     ],
@@ -144,7 +147,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Nunito+Sans:wght@400;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Nunito+Sans:wght@400;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap",
       },
     ],
   }),
@@ -155,8 +158,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  // Derive the active locale from the URL's first segment so the document is
+  // themed for RTL (Arabic) on the very first SSR paint, not after hydration.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { locale } = parseLocalePath(pathname);
   return (
-    <html lang="en">
+    <html lang={LOCALE_HTML_LANG[locale]} dir={localeDir(locale)}>
       <head>
         <HeadContent />
       </head>
@@ -170,6 +177,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    initPostHog();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

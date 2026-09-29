@@ -79,6 +79,15 @@
   font-feature-settings: "tnum";
 }
 
+/* Arabic (RTL): Latin display/mono fonts lack Arabic glyphs, so swap to
+   Arabic-capable families and drop the Latin negative letter-spacing. */
+:lang(ar) body { font-family: "Noto Sans Arabic", var(--font-sans); }
+:lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) h4 {
+  font-family: "Noto Kufi Arabic", var(--font-display);
+  letter-spacing: 0;
+}
+:lang(ar) .font-mono-tnum { font-family: "Noto Sans Arabic", var(--font-sans); }
+
 /* Background blobs */
 @keyframes blob-drift-a {
   0%, 100% { transform: translate(0, 0) scale(1); }

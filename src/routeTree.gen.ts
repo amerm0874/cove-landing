@@ -9,173 +9,183 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SupportRouteImport } from './routes/support'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as DeleteAccountRouteImport } from './routes/delete-account'
-import { Route as AffiliateRouteImport } from './routes/affiliate'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogIndexRouteImport } from './routes/blog/index'
-import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
+import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
+import { Route as Char123LocaleChar125TermsRouteImport } from './routes/{-$locale}/terms'
+import { Route as Char123LocaleChar125SupportRouteImport } from './routes/{-$locale}/support'
+import { Route as Char123LocaleChar125PrivacyRouteImport } from './routes/{-$locale}/privacy'
+import { Route as Char123LocaleChar125FeaturesRouteImport } from './routes/{-$locale}/features'
+import { Route as Char123LocaleChar125FaqRouteImport } from './routes/{-$locale}/faq'
+import { Route as Char123LocaleChar125DeleteAccountRouteImport } from './routes/{-$locale}/delete-account'
+import { Route as Char123LocaleChar125AffiliateRouteImport } from './routes/{-$locale}/affiliate'
+import { Route as Char123LocaleChar125BlogIndexRouteImport } from './routes/{-$locale}/blog/index'
+import { Route as Char123LocaleChar125BlogSlugRouteImport } from './routes/{-$locale}/blog/$slug'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SupportRoute = SupportRouteImport.update({
-  id: '/support',
-  path: '/support',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
+const Char123LocaleChar125RouteRoute =
+  Char123LocaleChar125RouteRouteImport.update({
+    id: '/{-$locale}',
+    path: '/{-$locale}',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LocaleChar125IndexRoute =
+  Char123LocaleChar125IndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125TermsRoute =
+  Char123LocaleChar125TermsRouteImport.update({
+    id: '/terms',
+    path: '/terms',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125SupportRoute =
+  Char123LocaleChar125SupportRouteImport.update({
+    id: '/support',
+    path: '/support',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125PrivacyRoute =
+  Char123LocaleChar125PrivacyRouteImport.update({
+    id: '/privacy',
+    path: '/privacy',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125FeaturesRoute =
+  Char123LocaleChar125FeaturesRouteImport.update({
+    id: '/features',
+    path: '/features',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125FaqRoute = Char123LocaleChar125FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => Char123LocaleChar125RouteRoute,
 } as any)
-const DeleteAccountRoute = DeleteAccountRouteImport.update({
-  id: '/delete-account',
-  path: '/delete-account',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AffiliateRoute = AffiliateRouteImport.update({
-  id: '/affiliate',
-  path: '/affiliate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const Char123LocaleChar125DeleteAccountRoute =
+  Char123LocaleChar125DeleteAccountRouteImport.update({
+    id: '/delete-account',
+    path: '/delete-account',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125AffiliateRoute =
+  Char123LocaleChar125AffiliateRouteImport.update({
+    id: '/affiliate',
+    path: '/affiliate',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125BlogIndexRoute =
+  Char123LocaleChar125BlogIndexRouteImport.update({
+    id: '/blog/',
+    path: '/blog/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125BlogSlugRoute =
+  Char123LocaleChar125BlogSlugRouteImport.update({
+    id: '/blog/$slug',
+    path: '/blog/$slug',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/affiliate': typeof AffiliateRoute
-  '/delete-account': typeof DeleteAccountRoute
-  '/faq': typeof FaqRoute
-  '/privacy': typeof PrivacyRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/support': typeof SupportRoute
-  '/terms': typeof TermsRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/blog/': typeof BlogIndexRoute
+  '/{-$locale}/affiliate': typeof Char123LocaleChar125AffiliateRoute
+  '/{-$locale}/delete-account': typeof Char123LocaleChar125DeleteAccountRoute
+  '/{-$locale}/faq': typeof Char123LocaleChar125FaqRoute
+  '/{-$locale}/features': typeof Char123LocaleChar125FeaturesRoute
+  '/{-$locale}/privacy': typeof Char123LocaleChar125PrivacyRoute
+  '/{-$locale}/support': typeof Char123LocaleChar125SupportRoute
+  '/{-$locale}/terms': typeof Char123LocaleChar125TermsRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
+  '/{-$locale}/blog/': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/affiliate': typeof AffiliateRoute
-  '/delete-account': typeof DeleteAccountRoute
-  '/faq': typeof FaqRoute
-  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/support': typeof SupportRoute
-  '/terms': typeof TermsRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/blog': typeof BlogIndexRoute
+  '/{-$locale}/affiliate': typeof Char123LocaleChar125AffiliateRoute
+  '/{-$locale}/delete-account': typeof Char123LocaleChar125DeleteAccountRoute
+  '/{-$locale}/faq': typeof Char123LocaleChar125FaqRoute
+  '/{-$locale}/features': typeof Char123LocaleChar125FeaturesRoute
+  '/{-$locale}/privacy': typeof Char123LocaleChar125PrivacyRoute
+  '/{-$locale}/support': typeof Char123LocaleChar125SupportRoute
+  '/{-$locale}/terms': typeof Char123LocaleChar125TermsRoute
+  '/{-$locale}': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
+  '/{-$locale}/blog': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/affiliate': typeof AffiliateRoute
-  '/delete-account': typeof DeleteAccountRoute
-  '/faq': typeof FaqRoute
-  '/privacy': typeof PrivacyRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/support': typeof SupportRoute
-  '/terms': typeof TermsRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/blog/': typeof BlogIndexRoute
+  '/{-$locale}/affiliate': typeof Char123LocaleChar125AffiliateRoute
+  '/{-$locale}/delete-account': typeof Char123LocaleChar125DeleteAccountRoute
+  '/{-$locale}/faq': typeof Char123LocaleChar125FaqRoute
+  '/{-$locale}/features': typeof Char123LocaleChar125FeaturesRoute
+  '/{-$locale}/privacy': typeof Char123LocaleChar125PrivacyRoute
+  '/{-$locale}/support': typeof Char123LocaleChar125SupportRoute
+  '/{-$locale}/terms': typeof Char123LocaleChar125TermsRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
+  '/{-$locale}/blog/': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/affiliate'
-    | '/delete-account'
-    | '/faq'
-    | '/privacy'
+    | '/{-$locale}'
     | '/sitemap.xml'
-    | '/support'
-    | '/terms'
-    | '/blog/$slug'
-    | '/blog/'
+    | '/{-$locale}/affiliate'
+    | '/{-$locale}/delete-account'
+    | '/{-$locale}/faq'
+    | '/{-$locale}/features'
+    | '/{-$locale}/privacy'
+    | '/{-$locale}/support'
+    | '/{-$locale}/terms'
+    | '/{-$locale}/'
+    | '/{-$locale}/blog/$slug'
+    | '/{-$locale}/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/affiliate'
-    | '/delete-account'
-    | '/faq'
-    | '/privacy'
     | '/sitemap.xml'
-    | '/support'
-    | '/terms'
-    | '/blog/$slug'
-    | '/blog'
+    | '/{-$locale}/affiliate'
+    | '/{-$locale}/delete-account'
+    | '/{-$locale}/faq'
+    | '/{-$locale}/features'
+    | '/{-$locale}/privacy'
+    | '/{-$locale}/support'
+    | '/{-$locale}/terms'
+    | '/{-$locale}'
+    | '/{-$locale}/blog/$slug'
+    | '/{-$locale}/blog'
   id:
     | '__root__'
-    | '/'
-    | '/affiliate'
-    | '/delete-account'
-    | '/faq'
-    | '/privacy'
+    | '/{-$locale}'
     | '/sitemap.xml'
-    | '/support'
-    | '/terms'
-    | '/blog/$slug'
-    | '/blog/'
+    | '/{-$locale}/affiliate'
+    | '/{-$locale}/delete-account'
+    | '/{-$locale}/faq'
+    | '/{-$locale}/features'
+    | '/{-$locale}/privacy'
+    | '/{-$locale}/support'
+    | '/{-$locale}/terms'
+    | '/{-$locale}/'
+    | '/{-$locale}/blog/$slug'
+    | '/{-$locale}/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AffiliateRoute: typeof AffiliateRoute
-  DeleteAccountRoute: typeof DeleteAccountRoute
-  FaqRoute: typeof FaqRoute
-  PrivacyRoute: typeof PrivacyRoute
+  Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SupportRoute: typeof SupportRoute
-  TermsRoute: typeof TermsRoute
-  BlogSlugRoute: typeof BlogSlugRoute
-  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/support': {
-      id: '/support'
-      path: '/support'
-      fullPath: '/support'
-      preLoaderRoute: typeof SupportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -183,69 +193,122 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
+    '/{-$locale}': {
+      id: '/{-$locale}'
+      path: '/{-$locale}'
+      fullPath: '/{-$locale}'
+      preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/delete-account': {
-      id: '/delete-account'
-      path: '/delete-account'
-      fullPath: '/delete-account'
-      preLoaderRoute: typeof DeleteAccountRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/affiliate': {
-      id: '/affiliate'
-      path: '/affiliate'
-      fullPath: '/affiliate'
-      preLoaderRoute: typeof AffiliateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
+    '/{-$locale}/': {
+      id: '/{-$locale}/'
       path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/'
+      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/blog/': {
-      id: '/blog/'
+    '/{-$locale}/terms': {
+      id: '/{-$locale}/terms'
+      path: '/terms'
+      fullPath: '/{-$locale}/terms'
+      preLoaderRoute: typeof Char123LocaleChar125TermsRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/support': {
+      id: '/{-$locale}/support'
+      path: '/support'
+      fullPath: '/{-$locale}/support'
+      preLoaderRoute: typeof Char123LocaleChar125SupportRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/privacy': {
+      id: '/{-$locale}/privacy'
+      path: '/privacy'
+      fullPath: '/{-$locale}/privacy'
+      preLoaderRoute: typeof Char123LocaleChar125PrivacyRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/features': {
+      id: '/{-$locale}/features'
+      path: '/features'
+      fullPath: '/{-$locale}/features'
+      preLoaderRoute: typeof Char123LocaleChar125FeaturesRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/faq': {
+      id: '/{-$locale}/faq'
+      path: '/faq'
+      fullPath: '/{-$locale}/faq'
+      preLoaderRoute: typeof Char123LocaleChar125FaqRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/delete-account': {
+      id: '/{-$locale}/delete-account'
+      path: '/delete-account'
+      fullPath: '/{-$locale}/delete-account'
+      preLoaderRoute: typeof Char123LocaleChar125DeleteAccountRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/affiliate': {
+      id: '/{-$locale}/affiliate'
+      path: '/affiliate'
+      fullPath: '/{-$locale}/affiliate'
+      preLoaderRoute: typeof Char123LocaleChar125AffiliateRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/blog/': {
+      id: '/{-$locale}/blog/'
       path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/blog/'
+      preLoaderRoute: typeof Char123LocaleChar125BlogIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
+    '/{-$locale}/blog/$slug': {
+      id: '/{-$locale}/blog/$slug'
       path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/blog/$slug'
+      preLoaderRoute: typeof Char123LocaleChar125BlogSlugRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
   }
 }
 
+interface Char123LocaleChar125RouteRouteChildren {
+  Char123LocaleChar125AffiliateRoute: typeof Char123LocaleChar125AffiliateRoute
+  Char123LocaleChar125DeleteAccountRoute: typeof Char123LocaleChar125DeleteAccountRoute
+  Char123LocaleChar125FaqRoute: typeof Char123LocaleChar125FaqRoute
+  Char123LocaleChar125FeaturesRoute: typeof Char123LocaleChar125FeaturesRoute
+  Char123LocaleChar125PrivacyRoute: typeof Char123LocaleChar125PrivacyRoute
+  Char123LocaleChar125SupportRoute: typeof Char123LocaleChar125SupportRoute
+  Char123LocaleChar125TermsRoute: typeof Char123LocaleChar125TermsRoute
+  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+  Char123LocaleChar125BlogSlugRoute: typeof Char123LocaleChar125BlogSlugRoute
+  Char123LocaleChar125BlogIndexRoute: typeof Char123LocaleChar125BlogIndexRoute
+}
+
+const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
+  {
+    Char123LocaleChar125AffiliateRoute: Char123LocaleChar125AffiliateRoute,
+    Char123LocaleChar125DeleteAccountRoute:
+      Char123LocaleChar125DeleteAccountRoute,
+    Char123LocaleChar125FaqRoute: Char123LocaleChar125FaqRoute,
+    Char123LocaleChar125FeaturesRoute: Char123LocaleChar125FeaturesRoute,
+    Char123LocaleChar125PrivacyRoute: Char123LocaleChar125PrivacyRoute,
+    Char123LocaleChar125SupportRoute: Char123LocaleChar125SupportRoute,
+    Char123LocaleChar125TermsRoute: Char123LocaleChar125TermsRoute,
+    Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+    Char123LocaleChar125BlogSlugRoute: Char123LocaleChar125BlogSlugRoute,
+    Char123LocaleChar125BlogIndexRoute: Char123LocaleChar125BlogIndexRoute,
+  }
+
+const Char123LocaleChar125RouteRouteWithChildren =
+  Char123LocaleChar125RouteRoute._addFileChildren(
+    Char123LocaleChar125RouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AffiliateRoute: AffiliateRoute,
-  DeleteAccountRoute: DeleteAccountRoute,
-  FaqRoute: FaqRoute,
-  PrivacyRoute: PrivacyRoute,
+  Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SupportRoute: SupportRoute,
-  TermsRoute: TermsRoute,
-  BlogSlugRoute: BlogSlugRoute,
-  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

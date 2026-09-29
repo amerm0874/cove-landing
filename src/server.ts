@@ -1,3 +1,4 @@
+import { giftRoute } from "./lib/gift-route";
 import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
@@ -46,6 +47,8 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const gift=await giftRoute(request);
+    if(gift)return gift;
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
