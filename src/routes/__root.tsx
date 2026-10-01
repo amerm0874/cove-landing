@@ -76,11 +76,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// TODO(og-image): once a real 1200x630 asset is supplied, host it at
-// `/og-image.png` and set OG_IMAGE_URL below — og:image/twitter:image meta
-// and Organization.logo will all pick it up automatically. Left unset for
-// now: a missing preview image beats a badly letterboxed transparent logo.
-const OG_IMAGE_URL: string | null = null;
+/** 1200x630 social preview. Referenced by og:image and twitter:image, and as
+ * Organization.image — Organization.logo stays the square mark below. */
+const OG_IMAGE_URL: string | null = `${SITE_URL}/og-image.jpg`;
 
 /** Square brand mark at a stable public path. Distinct from the 1200x630 OG
  * image above: this one feeds Organization.logo, which wants a square. */
@@ -130,8 +128,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       ...(OG_IMAGE_URL
         ? [
             { property: "og:image", content: OG_IMAGE_URL },
+            { property: "og:image:type", content: "image/jpeg" },
             { property: "og:image:width", content: "1200" },
             { property: "og:image:height", content: "630" },
+            {
+              property: "og:image:alt",
+              content: "Cove — the calm IVF tracker for your whole cycle, shown on iPhone",
+            },
           ]
         : []),
       { name: "twitter:card", content: "summary_large_image" },

@@ -10,10 +10,9 @@ import {
 } from "@/lib/blog";
 import { SITE_URL } from "@/lib/constants";
 
-// TODO(og-image): site-wide fallback intentionally unset until a real
-// 1200x630 asset is supplied (see __root.tsx). A post's own `og_image_url`
-// still overrides this whenever one is set on the row.
-const DEFAULT_OG_IMAGE: string | null = null;
+/** Site-wide social preview, used when a post row carries no `og_image_url`
+ * of its own. A post's own image always wins. */
+const DEFAULT_OG_IMAGE: string | null = `${SITE_URL}/og-image.jpg`;
 
 /** Square logo at a stable path — used as the publisher logo in Article schema. */
 const PUBLISHER_LOGO = `${SITE_URL}/logo.png`;
