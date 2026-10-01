@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
+import { SITE_URL } from "@/lib/constants";
 import { getPublishedPosts } from "@/lib/blog";
 
 export const Route = createFileRoute("/blog/")({
@@ -17,8 +19,9 @@ export const Route = createFileRoute("/blog/")({
         content: "Notes on IVF cycles, medication tracking, and building a calmer treatment process.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/blog` },
     ],
-    links: [{ rel: "canonical", href: "https://www.coveivf.life/blog" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/blog` }],
   }),
   component: BlogIndex,
 });
@@ -35,8 +38,10 @@ function BlogIndex() {
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Cove IVF</p>
-        <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">Blog</h1>
+        <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
+        <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">
+          The Cove IVF blog
+        </h1>
         <p className="mt-5 max-w-2xl text-lg text-plum/80">
           Notes on IVF cycles, medication tracking, and building a calmer treatment process.
         </p>

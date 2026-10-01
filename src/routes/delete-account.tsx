@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const Route = createFileRoute("/delete-account")({
   head: () => ({
@@ -38,7 +39,7 @@ function DeleteAccount() {
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Legal</p>
+        <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Delete Account" }]} />
         <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">
           Delete Your Cove Account
         </h1>

@@ -14,6 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import appCss from "../styles.css?url";
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SITE_URL } from "../lib/constants";
 
 function NotFoundComponent() {
   return (
@@ -81,12 +82,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 // now: a missing preview image beats a badly letterboxed transparent logo.
 const OG_IMAGE_URL: string | null = null;
 
+/** Square brand mark at a stable public path. Distinct from the 1200x630 OG
+ * image above: this one feeds Organization.logo, which wants a square. */
+const LOGO_URL = `${SITE_URL}/logo.png`;
+
 const ORGANIZATION_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Cove IVF",
-  url: "https://www.coveivf.life/",
-  ...(OG_IMAGE_URL ? { logo: OG_IMAGE_URL } : {}),
+  url: `${SITE_URL}/`,
+  logo: { "@type": "ImageObject", url: LOGO_URL, width: 512, height: 512 },
+  ...(OG_IMAGE_URL ? { image: OG_IMAGE_URL } : {}),
   sameAs: [
     "https://www.instagram.com/cove_appp/",
     "https://www.tiktok.com/@cove_app",
@@ -97,7 +103,8 @@ const WEBSITE_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Cove IVF",
-  url: "https://www.coveivf.life/",
+  url: `${SITE_URL}/`,
+  publisher: { "@type": "Organization", name: "Cove IVF", url: `${SITE_URL}/` },
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -105,13 +112,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      { title: "IVF Tracker & Medication Reminders for iPhone | Cove" },
       {
         name: "description",
         content:
           "The calm IVF tracker for your full cycle. Photograph your protocol, get exact medication lineups, dose changes, and discreet reminders. Private, encrypted, built for real IVF patients. Available now on iPhone.",
       },
-      { property: "og:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      { property: "og:title", content: "IVF Tracker & Medication Reminders for iPhone | Cove" },
       {
         property: "og:description",
         content:
@@ -128,7 +135,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ]
         : []),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Cove IVF Tracker — Medication & Cycle Tracker for IVF | iPhone" },
+      { name: "twitter:title", content: "IVF Tracker & Medication Reminders for iPhone | Cove" },
       {
         name: "twitter:description",
         content:

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Mail } from "lucide-react";
 import { BackgroundBlobs, Footer, Header, SocialIcons } from "@/components/site-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "./index";
 
 export const Route = createFileRoute("/support")({
@@ -34,7 +35,7 @@ function Support() {
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-4xl px-5 pt-14 pb-20 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Help &amp; contact</p>
+        <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Support" }]} />
         <h1 className="mt-4 font-display text-4xl font-semibold sm:text-5xl">Cove IVF Support</h1>
         <p className="mt-5 max-w-2xl text-lg text-plum/80">
           Questions, feedback, or trouble with the app? We read every message.

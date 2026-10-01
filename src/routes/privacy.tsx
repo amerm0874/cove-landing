@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -35,7 +36,7 @@ function Privacy() {
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Legal</p>
+        <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
         <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">Privacy Policy</h1>
         <p className="mt-3 font-mono-tnum text-sm text-muted">Last updated: September 10, 2026</p>
 

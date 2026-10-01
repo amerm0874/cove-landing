@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Check, ChevronDown, ShieldCheck, HeartHandshake, Stethoscope, Smartphone } from "lucide-react";
 import { BackgroundBlobs, Footer, Header, SocialIcons } from "@/components/site-chrome";
@@ -14,8 +14,9 @@ import {
 } from "@/components/chapters";
 import { Reveal } from "@/components/reveal";
 import { APP_STORE_URL } from "@/lib/constants";
+import { FEATURES } from "@/lib/features";
 import { joinAndroidWaitlist } from "@/lib/android-waitlist";
-import todayScreen from "@/assets/app/today.png";
+import todayScreen from "@/assets/app/today.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,9 +37,13 @@ const SOFTWARE_APPLICATION_SCHEMA = {
   downloadUrl: APP_STORE_URL,
   offers: {
     "@type": "Offer",
-    price: "0",
+    price: "12.99",
     priceCurrency: "USD",
+    category: "subscription",
+    availability: "https://schema.org/InStock",
+    url: APP_STORE_URL,
   },
+  featureList: FEATURES.map((f) => f.name),
 };
 
 const TRUST = [
@@ -84,6 +89,7 @@ function Landing() {
         <ChapterTimeline />
         <CommunityReality />
         <Privacy />
+        <ExploreInDetail />
         <Faq />
         <DownloadCta />
       </main>
@@ -134,8 +140,10 @@ function Hero() {
         src={todayScreen}
         alt="Cove IVF tracker Today screen showing an evening medication lineup, progress ring, and next dose"
         className="mx-auto mt-14 w-full max-w-[300px]"
-        width={763}
-        height={1652}
+        width={640}
+        height={1386}
+        fetchPriority="high"
+        decoding="sync"
       />
     </section>
   );
@@ -213,6 +221,45 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
         );
       })}
     </ul>
+  );
+}
+
+function ExploreInDetail() {
+  return (
+    <section id="explore" className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
+      <h2 className="font-display text-3xl font-semibold sm:text-4xl">Go deeper</h2>
+      <p className="mt-4 text-plum/80">
+        Each part of Cove has its own page — what it does, how it works, and where it stops.
+      </p>
+      <ul className="mt-8 flex flex-col gap-3">
+        {FEATURES.map((feature) => (
+          <li key={feature.slug}>
+            <Link
+              to="/features/$slug"
+              params={{ slug: feature.slug }}
+              className="block rounded-xl border border-line bg-white/60 px-5 py-4 transition-colors hover:bg-petal/70"
+            >
+              <span className="font-display text-lg font-semibold text-plum">{feature.name}</span>
+              <span className="mt-1 block text-sm text-plum/75">{feature.description}</span>
+            </Link>
+          </li>
+        ))}
+        <li>
+          <Link
+            to="/compare/$slug"
+            params={{ slug: "ivf-tracker-vs-spreadsheet" }}
+            className="block rounded-xl border border-line bg-white/60 px-5 py-4 transition-colors hover:bg-petal/70"
+          >
+            <span className="font-display text-lg font-semibold text-plum">
+              Cove vs. a spreadsheet and phone alarms
+            </span>
+            <span className="mt-1 block text-sm text-plum/75">
+              Including the cases where the spreadsheet is genuinely the better answer.
+            </span>
+          </Link>
+        </li>
+      </ul>
+    </section>
   );
 }
 

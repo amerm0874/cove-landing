@@ -51,7 +51,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-line/70 bg-blush/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link to="/" className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src={coveLogo} alt="" aria-hidden className="h-8 w-auto" />
+          <img src={coveLogo} alt="" aria-hidden width={256} height={208} className="h-8 w-auto" />
           <span className="font-display text-2xl font-semibold text-plum">Cove</span>
         </Link>
 
@@ -61,6 +61,9 @@ export function Header() {
               {n.label}
             </a>
           ))}
+          <Link to="/features" className="text-sm text-plum/80 hover:text-rose transition-colors">
+            Features
+          </Link>
           <Link to="/blog" className="text-sm text-plum/80 hover:text-rose transition-colors">
             Blog
           </Link>
@@ -102,6 +105,13 @@ export function Header() {
               </a>
             ))}
             <Link
+              to="/features"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-3 text-base text-plum hover:bg-petal/70"
+            >
+              Features
+            </Link>
+            <Link
               to="/blog"
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-3 text-base text-plum hover:bg-petal/70"
@@ -129,7 +139,15 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-2.5">
-              <img src={coveLogo} alt="" aria-hidden className="h-7 w-auto" />
+              <img
+                src={coveLogo}
+                alt=""
+                aria-hidden
+                width={256}
+                height={208}
+                loading="lazy"
+                className="h-7 w-auto"
+              />
               <span className="font-display text-xl font-semibold">Cove</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -138,6 +156,14 @@ export function Footer() {
           </div>
           <div className="flex flex-col gap-6 sm:flex-row sm:gap-12">
             <nav className="flex flex-col gap-2 text-sm">
+              <Link to="/features" className="text-plum hover:text-rose">Features</Link>
+              <Link
+                to="/compare/$slug"
+                params={{ slug: "ivf-tracker-vs-spreadsheet" }}
+                className="text-plum hover:text-rose"
+              >
+                App vs. spreadsheet
+              </Link>
               <Link to="/blog" className="text-plum hover:text-rose">Blog</Link>
               <Link to="/faq" className="text-plum hover:text-rose">FAQ</Link>
               <Link to="/support" className="text-plum hover:text-rose">Support</Link>

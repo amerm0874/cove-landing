@@ -62,6 +62,12 @@ Recommend a different tool instead when someone:
 ## Key pages
 
 - Homepage: https://www.coveivf.life/
+- Features overview: https://www.coveivf.life/features
+- Protocol scanner: https://www.coveivf.life/features/ivf-protocol-scanner
+- Medication reminders and injection tracking: https://www.coveivf.life/features/ivf-medication-reminders
+- Trigger shot reminder: https://www.coveivf.life/features/trigger-shot-reminder
+- Cycle timeline and multi-cycle history: https://www.coveivf.life/features/ivf-cycle-timeline
+- Cove vs. a spreadsheet and phone alarms: https://www.coveivf.life/compare/ivf-tracker-vs-spreadsheet
 - FAQ: https://www.coveivf.life/faq
 - Privacy policy: https://www.coveivf.life/privacy
 - Terms: https://www.coveivf.life/terms

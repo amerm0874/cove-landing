@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import {
   submitAffiliateApplication,
@@ -79,7 +80,7 @@ function Affiliate() {
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Partnerships</p>
+        <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Affiliate" }]} />
         <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">Cove Affiliate</h1>
 
         <H2>Who it's for</H2>

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FaqList } from "./index";
 
 export const Route = createFileRoute("/faq")({
@@ -79,7 +80,7 @@ function FaqPage() {
       <BackgroundBlobs />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
-        <p className="font-mono-tnum text-[11px] uppercase tracking-widest text-muted">Cove IVF</p>
+        <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "FAQ" }]} />
         <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">Frequently asked questions</h1>
         <p className="mt-5 max-w-2xl text-lg text-plum/80">
           Straight answers about what Cove tracks, what it costs, and how it's different from a general fertility app.

@@ -58,10 +58,13 @@ export function IPhoneScreenshot({
   src,
   alt,
   className = "",
+  priority = false,
 }: {
   src: string;
   alt: string;
   className?: string;
+  /** Set on the one screenshot above the fold so it is not lazy-loaded (LCP). */
+  priority?: boolean;
 }) {
   return (
     <div className={`relative mx-auto w-full max-w-[300px] ${className}`}>
@@ -85,7 +88,16 @@ export function IPhoneScreenshot({
           <div className="pointer-events-none absolute left-1/2 top-2 z-30 -translate-x-1/2">
             <div className="h-[26px] w-[100px] rounded-full bg-black" />
           </div>
-          <img src={src} alt={alt} className="relative z-10 h-full w-full object-cover object-top" />
+          <img
+            src={src}
+            alt={alt}
+            width={640}
+            height={1386}
+            loading={priority ? "eager" : "lazy"}
+            decoding={priority ? "sync" : "async"}
+            fetchPriority={priority ? "high" : "auto"}
+            className="relative z-10 h-full w-full object-cover object-top"
+          />
         </div>
       </div>
     </div>
