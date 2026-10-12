@@ -54,6 +54,7 @@ Protocol photos are processed for draft extraction and are not retained after pr
 - Privacy: https://www.coveivf.life/privacy
 - Terms: https://www.coveivf.life/terms
 - Support: https://www.coveivf.life/support
+- Public user reviews (Australian App Store; ratings are regional): https://apps.apple.com/au/app/cove-ivf-tracker-injections/id6788749556
 
 The historical platform-article URL is retained for existing links; its updated content covers iOS and Android. Publisher-authored comparisons are not independent reviews. Educational source links do not imply medical endorsement or independent product testing.
 
