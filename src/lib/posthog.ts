@@ -1,5 +1,6 @@
 import posthog from "posthog-js";
 import type { CaptureResult } from "posthog-js";
+import { filterStoreProperties } from "./store-click";
 
 /** From VITE_POSTHOG_KEY — never hardcode. Missing key = analytics no-op. */
 const POSTHOG_API_KEY = import.meta.env.VITE_POSTHOG_KEY?.trim() ?? "";
@@ -25,11 +26,10 @@ function redact(value: string): string {
 function beforeSend(event: CaptureResult | null): CaptureResult | null {
   try {
     if (event?.event === "store_link_clicked") {
-      const allowed = new Set(["distinct_id", "$lib", "$lib_version", "$insert_id", "$process_person_profile", "$ip", "cove_source", "environment", "platform", "page", "locale", "placement", "utm_source", "utm_medium", "utm_campaign"]);
-      event.properties = Object.fromEntries(Object.entries(event.properties).filter(([key]) => allowed.has(key)));
+      event.properties = filterStoreProperties(event.properties);
       return event;
     }
-    if (!event || event.event !== "$exception") return event;
+    if (!event || event.event !== "$exception") return null;
     const list = event.properties?.$exception_list;
     if (Array.isArray(list)) {
       event.properties.$exception_list = list.map((entry: unknown) => {
@@ -62,6 +62,9 @@ export function initPostHog(): void {
     capture_pageview: false,
     capture_pageleave: false,
     capture_exceptions: false,
+    capture_performance: false,
+    enable_heatmaps: false,
+    capture_dead_clicks: false,
     disable_session_recording: true,
     disable_surveys: true,
     advanced_disable_feature_flags: true,

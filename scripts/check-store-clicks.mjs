@@ -10,6 +10,13 @@ function load(file, dependencies = {}, globals = {}) {
  return exports;
 }
 const pure = load('src/lib/store-click.ts');
+const filtered = pure.filterStoreProperties({token:'project-token',distinct_id:'anonymous',platform:'ios',page:'/',email:'private@example.com',$current_url:'https://example.com/?email=private@example.com',$set:{email:'private@example.com'},$ip:false});
+assert.equal(filtered.token,'project-token');
+assert.equal(filtered.distinct_id,'anonymous');
+assert.equal(filtered.$ip,false);
+assert.equal('email' in filtered,false);
+assert.equal('$current_url' in filtered,false);
+assert.equal('$set' in filtered,false);
 for(const href of ['https://apps.apple.com/app/id6788749556','https://apps.apple.com/us/app/cove-ivf-tracker-injections/id6788749556','https://cove.onelink.me/lzsv/web']) assert.equal(pure.storePlatform(href),'ios');
 assert.equal(pure.storePlatform('https://play.google.com/store/apps/details?id=com.mohamedamer.cove'),'android');
 for(const href of ['https://apps.apple.com.evil.test/app/id6788749556','https://apps.apple.com/app/id123','javascript:alert(1)','https://play.google.com/store/apps/details?id=other']) assert.equal(pure.storePlatform(href),null);
