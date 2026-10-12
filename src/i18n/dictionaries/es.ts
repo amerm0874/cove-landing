@@ -137,12 +137,12 @@ export const es: Dictionary = {
         },
         {
           title: "Sin anuncios dentro de Cove",
-          body: "No mostramos anuncios dentro de Cove, y los datos de tu tratamiento nunca se usan para publicidad.",
+          body: "Cove no muestra anuncios dentro de la aplicación. AppsFlyer mide actividad del dispositivo y de campañas, sin recibir tus medicamentos, análisis o diario. Consulta las opciones en nuestra política de privacidad.",
         },
         { title: "Mantienes el control", body: "Puedes eliminar tus datos de forma permanente, cuando quieras, con un toque." },
         {
           title: "Discreto por diseño",
-          body: "Las notificaciones de la pantalla de bloqueo no nombran tus medicamentos a menos que lo actives.",
+          body: "Puedes ocultar los nombres de los medicamentos en la pantalla de bloqueo desde Ajustes → Notificaciones. Los recordatorios detallados están activados por defecto.",
         },
       ],
     },
@@ -188,8 +188,8 @@ export const es: Dictionary = {
     },
     scanner: {
       eyebrow: "Escáner de protocolo de FIV",
-      headline: "Una hoja de la clínica se convierte en todo tu plan de tratamiento.",
-      body: "Fotografía el protocolo una sola vez. El escáner de protocolo de Cove lo estructura en un plan que sí puedes leer — cada medicamento, cada dosis, cada día, en el mismo lugar.",
+      headline: "Fotografía la hoja de tu clínica y revisa el borrador.",
+      body: "Cove convierte la foto del protocolo en borradores. Compara cada medicamento, dosis, unidad, fecha y hora con las instrucciones de tu clínica, corrige los errores y confirma antes de guardar. El escáner no prescribe ni valida un tratamiento.",
       alt: "Pantalla del escáner de protocolo de Cove pidiendo fotografiar una hoja de medicación de la clínica",
     },
     verification: {
@@ -200,8 +200,8 @@ export const es: Dictionary = {
     },
     trigger: {
       eyebrow: "Recordatorio de la inyección desencadenante",
-      headline: "El recordatorio de la inyección desencadenante que no puede fallar.",
-      body: "Una cuenta atrás, recordatorios suaves que van subiendo y una confirmación clara. Discreto en tu pantalla de bloqueo — tus medicamentos nunca se nombran.",
+      headline: "Una cuenta atrás para tu inyección desencadenante.",
+      body: "Consulta la cuenta atrás y confirma la toma. La entrega depende de los permisos y ajustes del teléfono; configura siempre una alarma de respaldo independiente. Puedes ocultar los nombres en Ajustes → Notificaciones.",
       alt: "Pantalla de recordatorio de la inyección desencadenante de Cove con cuenta atrás y un botón de confirmación «ya me la puse»",
     },
     timeline: {
@@ -327,11 +327,11 @@ export const es: Dictionary = {
         label: "Desencadenante y avisos",
         headline: "La inyección que no puede ser un «quizá».",
         intro:
-          "Los recordatorios de rutina se pueden pausar. La inyección desencadenante no. Cove la trata como otro tipo de aviso y mantiene discretas las pantallas de bloqueo.",
+          "Mantén visible la hora que indicó tu clínica. Las notificaciones dependen de los ajustes y permisos del teléfono; utiliza una alarma independiente de respaldo.",
         items: [
           {
             title: "Alarma de la inyección desencadenante",
-            body: "Una cuenta atrás, recordatorios crecientes y un aviso a pantalla completa cuando toca. Confirma que te la pusiste, o toca «Aún no».",
+            body: "Una cuenta atrás y recordatorios para la hora indicada. Android puede mostrar una alarma a pantalla completa si los permisos lo permiten; iOS usa notificaciones y no anula el modo silencioso. Configura una alarma de respaldo independiente.",
           },
           {
             title: "Sigue activa si pausas",
@@ -494,7 +494,7 @@ export const es: Dictionary = {
       },
       {
         q: "¿Cuánto cuesta?",
-        a: "Cove cuesta 12,99 $/mes, u 8,33 $/mes con el plan facturado cada 6 meses. Se ofrece una prueba gratuita antes de que empiece cualquiera de los abonos.",
+        a: "Cove ofrece suscripciones con renovación automática. Antes de comprar se muestran el precio local, el periodo de facturación, las funciones y cualquier prueba disponible. Las ofertas dependen de la tienda y de tu elegibilidad; comprueba el importe total y las condiciones de renovación.",
       },
       {
         q: "¿Hay versión para Android?",

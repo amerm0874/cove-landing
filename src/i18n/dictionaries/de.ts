@@ -137,12 +137,12 @@ export const de: Dictionary = {
         },
         {
           title: "Keine Werbung in Cove",
-          body: "Wir zeigen keine Werbung in Cove, und deine Behandlungsdaten werden nie für Werbung genutzt.",
+          body: "Cove zeigt keine In-App-Werbung. AppsFlyer misst Geräte- und Kampagnenaktivität, erhält aber keine Medikamente, Laborwerte oder Tagebucheinträge. Deine Wahlmöglichkeiten stehen in der Datenschutzerklärung.",
         },
         { title: "Du behältst die Kontrolle", body: "Du kannst deine Daten jederzeit mit einem Tipp dauerhaft löschen." },
         {
           title: "Diskret gestaltet",
-          body: "Sperrbildschirm-Mitteilungen nennen deine Medikamente nicht, außer du aktivierst das.",
+          body: "Unter Einstellungen → Mitteilungen kannst du Medikamentennamen auf dem Sperrbildschirm verbergen. Detaillierte Erinnerungen sind standardmäßig aktiviert.",
         },
       ],
     },
@@ -188,8 +188,8 @@ export const de: Dictionary = {
     },
     scanner: {
       eyebrow: "IVF-Protokoll-Scanner",
-      headline: "Ein Klinikblatt wird zu deinem gesamten Behandlungsplan.",
-      body: "Fotografiere das Protokoll einmal. Der Protokoll-Scanner von Cove strukturiert es in einen Plan, den du wirklich lesen kannst — jedes Medikament, jede Dosis, jeder Tag, am selben Ort.",
+      headline: "Fotografiere dein Klinikblatt und prüfe den Entwurf.",
+      body: "Cove erstellt Entwürfe aus dem Protokollfoto. Vergleiche Medikament, Dosis, Einheit, Datum und Uhrzeit mit den Anweisungen deiner Klinik, korrigiere Fehler und bestätige vor dem Speichern. Der Scanner verschreibt und überprüft keine Behandlung medizinisch.",
       alt: "Cove-Protokoll-Scanner fordert dazu auf, ein Klinik-Medikamentenblatt zu fotografieren",
     },
     verification: {
@@ -200,8 +200,8 @@ export const de: Dictionary = {
     },
     trigger: {
       eyebrow: "Auslösespritzen-Erinnerung",
-      headline: "Die Auslösespritzen-Erinnerung, die nicht scheitern darf.",
-      body: "Ein Countdown, ansteigende leise Erinnerungen und eine klare Bestätigung. Diskret auf dem Sperrbildschirm — deine Medikamente werden nie genannt.",
+      headline: "Ein Countdown für deine Auslösespritze.",
+      body: "Sieh den Countdown und bestätige die Einnahme. Die Zustellung hängt von Berechtigungen und Geräteeinstellungen ab; stelle immer einen separaten Ersatzwecker. Medikamentennamen kannst du unter Einstellungen → Mitteilungen verbergen.",
       alt: "Cove-Auslösespritzen-Erinnerung mit Countdown und einer Bestätigung „Ich habe sie genommen“",
     },
     timeline: {
@@ -327,11 +327,11 @@ export const de: Dictionary = {
         label: "Auslösespritze & Warnungen",
         headline: "Die Spritze, die kein „vielleicht“ sein darf.",
         intro:
-          "Routine-Erinnerungen lassen sich pausieren. Die Auslösespritze nicht. Cove behandelt sie als eigene Art von Warnung und hält Sperrbildschirme diskret.",
+          "Behalte die von deiner Klinik genannte Uhrzeit im Blick. Mitteilungen hängen von Geräteeinstellungen und Berechtigungen ab; nutze einen unabhängigen Ersatzwecker.",
         items: [
           {
             title: "Auslösespritzen-Wecker",
-            body: "Ein Countdown, ansteigende Erinnerungen und eine Vollbild-Warnung, wenn es so weit ist. Bestätige, dass du sie genommen hast, oder tippe „Noch nicht“.",
+            body: "Ein Countdown und Erinnerungen für die vorgegebene Uhrzeit. Android kann bei entsprechender Berechtigung einen Vollbildalarm anzeigen; iOS verwendet Mitteilungen und umgeht den Lautlosmodus nicht. Stelle einen unabhängigen Ersatzwecker.",
           },
           {
             title: "Bleibt aktiv, wenn du pausierst",
@@ -494,7 +494,7 @@ export const de: Dictionary = {
       },
       {
         q: "Was kostet es?",
-        a: "Cove kostet 12,99 $/Monat oder 8,33 $/Monat im Plan mit Abrechnung alle 6 Monate. Vor Beginn eines Abos wird eine kostenlose Testphase angeboten.",
+        a: "Cove bietet automatisch verlängerbare Abonnements. Lokaler Preis, Abrechnungszeitraum, Funktionen und ein gegebenenfalls verfügbares Probeangebot werden vor dem Kauf angezeigt. Angebote hängen vom Store und der Berechtigung ab; prüfe Gesamtbetrag und Verlängerungsbedingungen.",
       },
       {
         q: "Gibt es eine Android-Version?",

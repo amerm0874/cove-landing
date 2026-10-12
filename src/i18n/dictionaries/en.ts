@@ -142,12 +142,12 @@ export const en = {
         },
         {
           title: "No ads inside Cove",
-          body: "We don't show ads inside Cove, and your treatment details are never used for advertising.",
+          body: "Cove has no in-app ads. AppsFlyer measures device and campaign activity; it does not receive your medications, lab results or journal. See our privacy policy for your choices.",
         },
         { title: "You'll stay in control", body: "You can delete your data permanently, anytime, in one tap." },
         {
           title: "Discreet by design",
-          body: "Lock-screen notifications don't name your medications unless you turn that on.",
+          body: "You can hide medication names on lock-screen reminders in Settings → Notifications. Detailed reminders are enabled by default.",
         },
       ],
     },
@@ -194,8 +194,8 @@ export const en = {
     },
     scanner: {
       eyebrow: "IVF protocol scanner",
-      headline: "One clinic sheet becomes your entire treatment plan.",
-      body: "Photograph the protocol once. Cove's IVF protocol scanner structures it into a plan you can actually read — every drug, every dose, every day, in the same place.",
+      headline: "Photograph your clinic sheet, then review the draft.",
+      body: "Cove reads a protocol photo into draft entries. Compare each medication, dose, unit, date and time with your clinic’s instructions, correct any mistakes, and confirm before saving. The scanner does not prescribe or verify a treatment.",
       alt: "Cove protocol scanner screen prompting to photograph a clinic medication sheet",
     },
     verification: {
@@ -206,8 +206,8 @@ export const en = {
     },
     trigger: {
       eyebrow: "Trigger shot reminder",
-      headline: "The trigger shot reminder that cannot fail.",
-      body: "A countdown, escalating quiet reminders, and a clear confirmation. Discreet on your lock screen — your medications are never named.",
+      headline: "A countdown for your trigger shot.",
+      body: "See the countdown and confirm when you have taken the shot. Delivery depends on notification permissions and device settings; always set a separate backup alarm. You can hide medication names in Settings → Notifications.",
       alt: "Cove trigger shot reminder screen with countdown and an I've taken it confirmation button",
     },
     timeline: {
@@ -334,11 +334,11 @@ export const en = {
         label: "Trigger & alerts",
         headline: "The shot that cannot be a maybe.",
         intro:
-          "Routine reminders can pause. The trigger shot cannot. Cove treats it as a different kind of alert, and keeps lock screens discreet.",
+          "Keep the time your clinic gave you visible. Notifications depend on your phone settings and permissions; use an independent backup alarm.",
         items: [
           {
             title: "Trigger shot alarm",
-            body: "A countdown, escalating reminders, and a full-screen alert when it's due. Confirm you've taken it, or tap Not yet.",
+            body: "A countdown and reminders for your scheduled trigger shot. Android can show a full-screen alarm where permitted; iOS uses notifications and does not bypass silent mode. Set a separate backup alarm.",
           },
           {
             title: "Stays on if you pause",
@@ -501,7 +501,7 @@ export const en = {
       },
       {
         q: "How much does it cost?",
-        a: "Cove is $12.99/month, or $8.33/month when you choose the plan billed every 6 months. A free trial is offered before either subscription starts.",
+        a: "Cove offers auto-renewing subscriptions. The app shows your local price, billing period, included features and any eligible trial before you subscribe. Offers vary by store and eligibility; check the purchase screen for the total charged and renewal terms.",
       },
       {
         q: "Is there an Android version?",

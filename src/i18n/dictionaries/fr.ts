@@ -137,12 +137,12 @@ export const fr: Dictionary = {
         },
         {
           title: "Aucune publicité dans Cove",
-          body: "Nous n’affichons aucune publicité dans Cove, et vos données de traitement ne servent jamais à la publicité.",
+          body: "Cove ne diffuse pas de publicités dans l’application. AppsFlyer mesure les données d’appareil et de campagne, sans recevoir vos médicaments, résultats de laboratoire ou journal. Consultez notre politique de confidentialité.",
         },
         { title: "Vous gardez le contrôle", body: "Vous pouvez supprimer vos données définitivement, à tout moment, en un geste." },
         {
           title: "Discret par conception",
-          body: "Les notifications de l’écran verrouillé ne nomment pas vos médicaments, sauf si vous l’activez.",
+          body: "Vous pouvez masquer les noms des médicaments sur l’écran verrouillé dans Réglages → Notifications. Les rappels détaillés sont activés par défaut.",
         },
       ],
     },
@@ -188,8 +188,8 @@ export const fr: Dictionary = {
     },
     scanner: {
       eyebrow: "Scanner de protocole FIV",
-      headline: "Une feuille de clinique devient tout votre plan de traitement.",
-      body: "Photographiez le protocole une seule fois. Le scanner de protocole de Cove le structure en un plan réellement lisible — chaque médicament, chaque dose, chaque jour, au même endroit.",
+      headline: "Photographiez la feuille de votre clinique, puis vérifiez le brouillon.",
+      body: "Cove transforme la photo du protocole en brouillons. Comparez chaque médicament, dose, unité, date et heure aux instructions de votre clinique, corrigez les erreurs et confirmez avant d’enregistrer. Le scanner ne prescrit ni ne valide un traitement.",
       alt: "Écran du scanner de protocole Cove invitant à photographier une feuille de médicaments de clinique",
     },
     verification: {
@@ -200,8 +200,8 @@ export const fr: Dictionary = {
     },
     trigger: {
       eyebrow: "Rappel de la piqûre de déclenchement",
-      headline: "Le rappel de la piqûre de déclenchement qui ne peut pas échouer.",
-      body: "Un compte à rebours, des rappels discrets qui montent en intensité, et une confirmation claire. Discret sur l’écran verrouillé — vos médicaments ne sont jamais nommés.",
+      headline: "Un compte à rebours pour votre injection de déclenchement.",
+      body: "Consultez le compte à rebours et confirmez la prise. La réception dépend des autorisations et des réglages du téléphone ; prévoyez toujours une alarme de secours indépendante. Masquez les noms dans Réglages → Notifications si vous le souhaitez.",
       alt: "Écran de rappel de la piqûre de déclenchement Cove avec compte à rebours et un bouton de confirmation « je l’ai faite »",
     },
     timeline: {
@@ -327,11 +327,11 @@ export const fr: Dictionary = {
         label: "Déclenchement et alertes",
         headline: "L’injection qui ne peut pas être un « peut-être ».",
         intro:
-          "Les rappels de routine peuvent être mis en pause. La piqûre de déclenchement, non. Cove la traite comme un autre type d’alerte, et garde l’écran verrouillé discret.",
+          "Gardez l’heure indiquée par votre clinique visible. Les notifications dépendent des réglages et autorisations du téléphone ; prévoyez une alarme indépendante.",
         items: [
           {
             title: "Alarme de la piqûre de déclenchement",
-            body: "Un compte à rebours, des rappels croissants et une alerte plein écran le moment venu. Confirmez que vous l’avez faite, ou touchez « Pas encore ».",
+            body: "Un compte à rebours et des rappels pour l’heure prescrite. Android peut afficher une alarme plein écran si les autorisations le permettent ; iOS utilise des notifications sans contourner le mode silencieux. Prévoyez une alarme de secours indépendante.",
           },
           {
             title: "Reste active si vous mettez en pause",
@@ -494,7 +494,7 @@ export const fr: Dictionary = {
       },
       {
         q: "Combien ça coûte ?",
-        a: "Cove coûte 12,99 $/mois, ou 8,33 $/mois avec le plan facturé tous les 6 mois. Un essai gratuit est proposé avant le début de l’abonnement.",
+        a: "Cove propose des abonnements à renouvellement automatique. Le prix local, la période de facturation, les fonctionnalités et tout essai éligible sont affichés avant l’achat. Les offres varient selon le magasin et votre éligibilité ; vérifiez le montant total et les conditions de renouvellement.",
       },
       {
         q: "Existe-t-il une version Android ?",
