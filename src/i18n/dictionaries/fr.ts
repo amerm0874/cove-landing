@@ -111,7 +111,7 @@ export const fr: Dictionary = {
     hero: {
       eyebrow: "Suivi FIV · iPhone et Android",
       heading: "Le suivi FIV serein pour tout votre cycle.",
-      body: "Cove est un suivi de cycle et de médicaments de FIV qui vous accompagne du premier protocole jusqu’au résultat final. Photographiez la feuille de votre clinique pour obtenir la liste exacte de vos médicaments, puis gardez chaque changement de dose, chaque rendez-vous et le rappel de la piqûre de déclenchement en un seul endroit chiffré — pour ne pas tout garder en tête.",
+      body: "Réunissez médicaments, rendez-vous et notes de cycle. Photographiez la feuille de votre clinique, vérifiez le brouillon et confirmez les détails avant de sauvegarder.",
       badge: "iPhone et Android · pensé pour les cycles de FIV",
       todayAlt:
         "Écran Aujourd’hui du suivi FIV Cove montrant la liste des médicaments du soir, l’anneau de progression et la dose suivante",
@@ -194,7 +194,7 @@ export const fr: Dictionary = {
     },
     verification: {
       eyebrow: "Vérification de la dose",
-      headline: "Quand votre clinique change un chiffre, tout reste exact.",
+      headline: "Quand votre clinique modifie le plan, mettez votre calendrier à jour.",
       body: "Mettez la valeur à jour une fois — après l’avoir confirmée sur votre feuille de clinique. En tant que suivi de vos médicaments de FIV, Cove la remplace sur la carte du soir, le rappel du lendemain et le journal.",
       alt: "Écran de vérification des doses Cove demandant de comparer chaque médicament scanné à votre feuille de clinique",
     },
@@ -238,16 +238,11 @@ export const fr: Dictionary = {
       ],
     },
     community: {
-      eyebrow: "Un terrain commun",
-      heading: "Vous n’êtes pas la seule à ressentir cela.",
-      voices: [
-        "J’étais terrifiée à l’idée d’oublier quelque chose.",
-        "Chaque rendez-vous de monitorage changeait le plan.",
-        "J’avais des rappels partout et je craignais quand même de rater une dose.",
-        "La logistique est devenue presque aussi épuisante que le traitement.",
-      ],
+      eyebrow: "Des avis sur l’App Store",
+      heading: "Moins de détails à garder en tête.",
+      voices: ["Décrit une charge d’organisation réduite en réunissant les tâches de suivi.","Apprécie de réunir médicaments, rendez-vous et dépenses du cycle dans une application."],
       closing: "La FIV est déjà accablante. La garder organisée ne devrait pas l’être.",
-      note: "Des thèmes que les patientes décrivent souvent publiquement. Pas des citations attribuées. Pas des recommandations.",
+      note: "Résumés de deux avis publics de l’App Store australien, consultés le 12 octobre 2026. Expériences individuelles, pas des preuves cliniques. Originaux accessibles ci-dessous.",
     },
   },
 
@@ -464,7 +459,7 @@ export const fr: Dictionary = {
           },
           {
             title: "iPhone et Android",
-            body: "Cove est disponible sur les deux. Même produit, mêmes contrôles de confidentialité.",
+            body: "Disponible sur iPhone et Android. Les fonctions et notifications peuvent varier selon la plateforme et la version ; consultez votre fiche boutique.",
           },
         ],
       },

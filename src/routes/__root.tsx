@@ -19,6 +19,7 @@ import { LOGO_URL, OG_IMAGE_ALT, OG_IMAGE_URL as SITE_OG_IMAGE_URL, SITE_URL } f
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { capturePostHogException, initPostHog } from "../lib/posthog";
+import { listenForStoreClicks } from "../lib/store-click-tracking";
 
 function NotFoundComponent() {
   return (
@@ -198,6 +199,7 @@ function RootComponent() {
 
   useEffect(() => {
     initPostHog();
+    return listenForStoreClicks();
   }, []);
 
   return (

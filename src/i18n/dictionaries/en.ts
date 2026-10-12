@@ -116,7 +116,7 @@ export const en = {
     hero: {
       eyebrow: "IVF Tracker · iPhone & Android",
       heading: "The calm IVF tracker for your whole cycle.",
-      body: "Cove is an IVF cycle tracker and medication tracker that follows you from the first protocol to the final result. Photograph your clinic's sheet for your exact IVF medication tracker lineup, then keep every dose change, appointment, and trigger shot reminder in one encrypted place — so you're not holding it all in your head.",
+      body: "Keep your medication schedule, appointments and cycle notes together. Photograph your clinic sheet, review the draft, and confirm the details before saving.",
       badge: "iPhone & Android · designed for IVF cycles",
       todayAlt:
         "Cove IVF tracker Today screen showing an evening medication lineup, progress ring, and next dose",
@@ -200,7 +200,7 @@ export const en = {
     },
     verification: {
       eyebrow: "Dose verification",
-      headline: "When your clinic changes one number, everything stays accurate.",
+      headline: "When your clinic changes the plan, update your schedule.",
       body: "Update the value once — after you confirm it against your clinic sheet. As your IVF meds tracker, Cove replaces it on tonight's card, tomorrow's reminder, and the log.",
       alt: "Cove dose verification screen asking you to check each scanned medication against your clinic sheet",
     },
@@ -244,16 +244,11 @@ export const en = {
       ],
     },
     community: {
-      eyebrow: "Common ground",
-      heading: "You're not the only one who feels this way.",
-      voices: [
-        "I was terrified of forgetting something.",
-        "Every monitoring appointment changed the plan.",
-        "I had reminders everywhere and still worried I'd miss a dose.",
-        "The logistics became almost as exhausting as the treatment.",
-      ],
+      eyebrow: "From App Store reviewers",
+      heading: "Less to keep in your head.",
+      voices: ["Describes less organisational burden from keeping tracking tasks together.","Values keeping medication, appointments and cycle expenses in one app."],
       closing: "IVF is already overwhelming. Keeping it organized shouldn't be.",
-      note: "Themes patients often describe publicly. Not attributed quotes. Not endorsements.",
+      note: "Summaries of two public Australian App Store reviews, checked 12 October 2026. Individual experiences, not clinical evidence. Read the originals below.",
     },
   },
 
@@ -471,7 +466,7 @@ export const en = {
           },
           {
             title: "iPhone and Android",
-            body: "Cove is available now on both. Same product, same privacy controls.",
+            body: "Available on iPhone and Android. Features and notification behaviour can differ by platform and version; check your store listing.",
           },
         ],
       },

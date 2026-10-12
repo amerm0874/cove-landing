@@ -107,7 +107,7 @@ function Hero() {
       </h1>
       <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-plum/80">{h.body}</p>
 
-      <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <div data-store-placement="hero" className="mt-9 flex flex-wrap items-center justify-center gap-4">
         <a
           href={APP_STORE_URL}
           aria-label={t.common.downloadOnAppStore}

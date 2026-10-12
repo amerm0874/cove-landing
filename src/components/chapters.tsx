@@ -220,7 +220,7 @@ export function WithoutWithCove() {
   );
 }
 
-/* --------- Community reality (themes, NOT testimonials) --------- */
+/* --------- Attributed summaries; never presented as verbatim quotes --------- */
 
 export function CommunityReality() {
   const c = useT().chapters.community;
@@ -233,9 +233,10 @@ export function CommunityReality() {
       <div className="mt-12 space-y-6">
         {c.voices.map((v, i) => (
           <Reveal key={v} delay={i * 80}>
-            <blockquote className="font-display text-xl leading-snug text-plum/85 sm:text-2xl">
-              &ldquo;{v}&rdquo;
-            </blockquote>
+            <p className="font-display text-xl leading-snug text-plum/85 sm:text-2xl">{v}</p>
+            <a data-store-purpose="review" className="mt-3 inline-block text-sm text-rose-deep underline underline-offset-4" href="https://apps.apple.com/au/app/cove-ivf-tracker-injections/id6788749556">
+              {i === 0 ? "zoewellington26 · 2026-09-08" : "SJMac20 · 2026-09-13"} · App Store (AU)
+            </a>
           </Reveal>
         ))}
       </div>

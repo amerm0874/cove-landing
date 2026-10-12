@@ -14,6 +14,7 @@ import {
 } from "@/lib/seo";
 import { useLocale, useT } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALE_HTML_LANG, type Locale } from "@/i18n/config";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
 
 /** A post's own `og_image_url` wins; otherwise the site-wide preview. */
 const DEFAULT_OG_IMAGE: string = OG_IMAGE_URL;
@@ -127,6 +128,14 @@ function BlogPost() {
         <p className="mt-5 max-w-2xl text-lg text-plum/80">{post.description}</p>
 
         <article className="blog-body mt-12" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
+        <aside className="mt-12 rounded-2xl border border-line bg-petal/40 p-6">
+          <h2 className="font-display text-2xl font-semibold text-plum">{t.home.downloadCta.heading}</h2>
+          <div className="mt-5 flex flex-wrap gap-4">
+            <a data-store-placement="article_end" href={APP_STORE_URL} className="rounded-full bg-rose px-6 py-3 text-sm font-semibold text-white hover:bg-rose-deep">{t.common.downloadOnAppStore}</a>
+            <a data-store-placement="article_end" href={GOOGLE_PLAY_URL} className="rounded-full bg-plum px-6 py-3 text-sm font-semibold text-white hover:bg-plum-soft">{t.common.googlePlayAlt}</a>
+          </div>
+          <p className="mt-4 text-sm text-muted">{t.faqPage.items[4].a}</p>
+        </aside>
       </main>
       <Footer />
     </div>

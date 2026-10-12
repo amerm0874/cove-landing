@@ -24,6 +24,11 @@ function redact(value: string): string {
 /** The affiliate/support pages collect an email address — never let it reach an exception. */
 function beforeSend(event: CaptureResult | null): CaptureResult | null {
   try {
+    if (event?.event === "store_link_clicked") {
+      const allowed = new Set(["distinct_id", "$lib", "$lib_version", "$insert_id", "$process_person_profile", "$ip", "cove_source", "environment", "platform", "page", "locale", "placement", "utm_source", "utm_medium", "utm_campaign"]);
+      event.properties = Object.fromEntries(Object.entries(event.properties).filter(([key]) => allowed.has(key)));
+      return event;
+    }
     if (!event || event.event !== "$exception") return event;
     const list = event.properties?.$exception_list;
     if (Array.isArray(list)) {
@@ -41,26 +46,38 @@ function beforeSend(event: CaptureResult | null): CaptureResult | null {
 
 /**
  * Client-only init (guarded by the window check in the call site). This is a
- * public marketing site — no protocol/med/health content is ever rendered
- * here — but replay masking is still left at PostHog's default (all input
- * fields masked) as a baseline, since the contact/newsletter forms collect
- * an email address.
+ * public marketing site. Only explicit download clicks are enabled: no replay,
+ * form autocapture, persistent identifiers or automatic pageviews.
  */
 export function initPostHog(): void {
-  if (initialized || !POSTHOG_API_KEY) return;
+  if (initialized || !POSTHOG_API_KEY || typeof window === "undefined") return;
+  if (!["coveivf.life", "www.coveivf.life"].includes(window.location.hostname)) return;
   initialized = true;
 
   posthog.init(POSTHOG_API_KEY, {
     api_host: POSTHOG_HOST,
-    person_profiles: "identified_only",
-    capture_exceptions: true,
-    disable_session_recording: false,
-    session_recording: {
-      maskAllInputs: true,
-    },
+    person_profiles: "never",
+    persistence: "memory",
+    autocapture: false,
+    capture_pageview: false,
+    capture_pageleave: false,
+    capture_exceptions: false,
+    disable_session_recording: true,
+    disable_surveys: true,
+    advanced_disable_feature_flags: true,
+    ip: false,
     before_send: beforeSend,
   });
-  posthog.register({ cove_source: "site" });
+  posthog.register({ cove_source: "site", environment: "production" });
+}
+
+export function captureStoreClick(properties: Record<string, string>): void {
+  if (!initialized) return;
+  try {
+    posthog.capture("store_link_clicked", properties, { transport: "sendBeacon", send_instantly: true });
+  } catch {
+    // Analytics must never prevent navigation to the store.
+  }
 }
 
 export function capturePostHogException(error: unknown): void {

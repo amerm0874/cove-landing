@@ -111,7 +111,7 @@ export const de: Dictionary = {
     hero: {
       eyebrow: "IVF-Tracker · iPhone & Android",
       heading: "Der ruhige IVF-Tracker für deinen ganzen Zyklus.",
-      body: "Cove ist ein Zyklus- und Medikamenten-Tracker für die Kinderwunschbehandlung, der dich vom ersten Protokoll bis zum letzten Ergebnis begleitet. Fotografiere den Plan deiner Klinik für deine genaue Medikamentenliste und halte dann jede Dosisänderung, jeden Termin und die Erinnerung an die Auslösespritze verschlüsselt an einem Ort — damit du nicht alles im Kopf behalten musst.",
+      body: "Medikamentenplan, Termine und Zyklusnotizen an einem Ort. Fotografiere dein Klinikblatt, prüfe den Entwurf und bestätige die Angaben vor dem Speichern.",
       badge: "iPhone & Android · für IVF-Zyklen gemacht",
       todayAlt:
         "Cove-IVF-Tracker: Heute-Ansicht mit der abendlichen Medikamentenliste, Fortschrittsring und nächster Dosis",
@@ -194,7 +194,7 @@ export const de: Dictionary = {
     },
     verification: {
       eyebrow: "Dosis-Überprüfung",
-      headline: "Ändert deine Klinik eine Zahl, bleibt alles korrekt.",
+      headline: "Wenn deine Klinik den Plan ändert, aktualisiere deinen Zeitplan.",
       body: "Aktualisiere den Wert einmal — nachdem du ihn mit deinem Klinikblatt abgeglichen hast. Als dein IVF-Medikamenten-Tracker ersetzt Cove ihn auf der Karte für heute Abend, der morgigen Erinnerung und im Protokoll.",
       alt: "Cove-Dosis-Überprüfung fordert dazu auf, jedes gescannte Medikament mit dem Klinikblatt abzugleichen",
     },
@@ -238,16 +238,11 @@ export const de: Dictionary = {
       ],
     },
     community: {
-      eyebrow: "Gemeinsamer Boden",
-      heading: "Du bist nicht die Einzige, die so empfindet.",
-      voices: [
-        "Ich hatte panische Angst, etwas zu vergessen.",
-        "Jeder Monitoring-Termin änderte den Plan.",
-        "Ich hatte überall Erinnerungen und sorgte mich trotzdem, eine Dosis zu verpassen.",
-        "Die Organisation wurde fast so anstrengend wie die Behandlung selbst.",
-      ],
+      eyebrow: "Aus App-Store-Bewertungen",
+      heading: "Weniger im Kopf behalten.",
+      voices: ["Beschreibt weniger Organisationsaufwand, wenn die Aufgaben an einem Ort zusammenkommen.","Schätzt Medikamente, Termine und Zykluskosten in einer App."],
       closing: "IVF ist schon überwältigend genug. Alles zu organisieren sollte es nicht sein.",
-      note: "Themen, die Patientinnen oft öffentlich beschreiben. Keine zugeordneten Zitate. Keine Empfehlungen.",
+      note: "Zusammenfassungen zweier öffentlicher Bewertungen im australischen App Store, geprüft am 12. Oktober 2026. Individuelle Erfahrungen, keine klinischen Belege. Originale unten verlinkt.",
     },
   },
 
@@ -464,7 +459,7 @@ export const de: Dictionary = {
           },
           {
             title: "iPhone und Android",
-            body: "Cove ist jetzt für beide verfügbar. Gleiches Produkt, gleiche Datenschutz-Einstellungen.",
+            body: "Für iPhone und Android verfügbar. Funktionen und Mitteilungen können je nach Plattform und Version abweichen; prüfe deinen Store-Eintrag.",
           },
         ],
       },

@@ -111,7 +111,7 @@ export const es: Dictionary = {
     hero: {
       eyebrow: "Seguimiento de FIV · iPhone y Android",
       heading: "El seguimiento de FIV tranquilo para todo tu ciclo.",
-      body: "Cove es un seguimiento del ciclo y la medicación de FIV que te acompaña desde el primer protocolo hasta el resultado final. Fotografía la hoja de tu clínica para obtener la lista exacta de tu medicación, y guarda cada cambio de dosis, cada cita y el recordatorio de la inyección desencadenante en un solo lugar cifrado — para no llevarlo todo en la cabeza.",
+      body: "Reúne el calendario de medicación, las citas y las notas del ciclo. Fotografía la hoja de tu clínica, revisa el borrador y confirma los detalles antes de guardar.",
       badge: "iPhone y Android · pensado para ciclos de FIV",
       todayAlt:
         "Pantalla Hoy del seguimiento de FIV Cove con la lista de medicación de la noche, el anillo de progreso y la siguiente dosis",
@@ -194,7 +194,7 @@ export const es: Dictionary = {
     },
     verification: {
       eyebrow: "Verificación de la dosis",
-      headline: "Cuando tu clínica cambia un número, todo sigue siendo exacto.",
+      headline: "Cuando tu clínica cambie el plan, actualiza tu calendario.",
       body: "Actualiza el valor una vez — después de confirmarlo con la hoja de tu clínica. Como tu seguimiento de medicación de FIV, Cove lo reemplaza en la tarjeta de esta noche, el recordatorio de mañana y el registro.",
       alt: "Pantalla de verificación de dosis de Cove pidiendo comparar cada medicamento escaneado con la hoja de tu clínica",
     },
@@ -238,16 +238,11 @@ export const es: Dictionary = {
       ],
     },
     community: {
-      eyebrow: "Terreno común",
-      heading: "No eres la única que se siente así.",
-      voices: [
-        "Me aterraba olvidarme de algo.",
-        "Cada cita de monitorización cambiaba el plan.",
-        "Tenía recordatorios por todas partes y aun así temía saltarme una dosis.",
-        "La logística acabó siendo casi tan agotadora como el tratamiento.",
-      ],
+      eyebrow: "Opiniones del App Store",
+      heading: "Menos detalles que recordar.",
+      voices: ["Describe una menor carga de organización al reunir las tareas de seguimiento.","Valora reunir medicación, citas y gastos del ciclo en una aplicación."],
       closing: "La FIV ya es abrumadora. Mantenerla organizada no debería serlo.",
-      note: "Temas que las pacientes describen a menudo en público. No son citas atribuidas. No son recomendaciones.",
+      note: "Resúmenes de dos opiniones públicas del App Store australiano, consultadas el 12 de octubre de 2026. Experiencias individuales, no pruebas clínicas. Originales enlazados abajo.",
     },
   },
 
@@ -464,7 +459,7 @@ export const es: Dictionary = {
           },
           {
             title: "iPhone y Android",
-            body: "Cove ya está disponible en ambos. Mismo producto, mismos controles de privacidad.",
+            body: "Disponible para iPhone y Android. Las funciones y notificaciones pueden variar según la plataforma y la versión; consulta tu tienda.",
           },
         ],
       },
