@@ -24,7 +24,7 @@ import {
 } from "@/lib/seo";
 import { getDictionary, useLocale, useT, type Dictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, type Locale } from "@/i18n/config";
-import todayScreen from "@/assets/app/today.png";
+import todayScreen from "@/assets/app/today.webp";
 import googlePlayBadge from "@/assets/google-play-badge.png";
 
 function localeOf(params: { locale?: string }): Locale {

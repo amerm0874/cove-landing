@@ -68,9 +68,9 @@ export const en = {
         "The calm IVF tracker for your whole cycle. Photograph your protocol for exact medication lineups, dose changes and discreet reminders. iPhone and Android.",
     },
     features: {
-      title: "Features — Cove IVF Tracker",
+      title: "IVF Medication Tracker & Reminders | Cove",
       description:
-        "Every Cove feature: protocol scanner, tonight's medication lineup, trigger shot alarm, appointments, monitoring, embryos and journal. iPhone and Android.",
+        "Organize your IVF medication schedule, dose reminders, injection sites and clinic records. Scan your protocol, review each entry and keep your plan together.",
       ogDescription:
         "Photograph your protocol, keep tonight's lineup, protect the trigger shot, and hold the rest of the cycle in one encrypted place.",
     },

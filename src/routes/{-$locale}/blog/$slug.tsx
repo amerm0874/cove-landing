@@ -1,7 +1,8 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { BackgroundBlobs, Footer, Header } from "@/components/site-chrome";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { getPublishedPostBySlug, type PostDetail } from "@/lib/blog";
+import { getPublishedPostBySlug, getPublishedPosts, type PostDetail } from "@/lib/blog";
+import { articleTool, blogDiscoveryCopy, relatedPosts } from "@/lib/blog-discovery";
 import {
   absoluteUrl,
   breadcrumbSchema,
@@ -13,30 +14,28 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { useLocale, useT } from "@/i18n";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALE_HTML_LANG, type Locale } from "@/i18n/config";
+import { DEFAULT_LOCALE, localizedPath, LOCALE_HTML_LANG, type Locale } from "@/i18n/config";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
 
 /** A post's own `og_image_url` wins; otherwise the site-wide preview. */
 const DEFAULT_OG_IMAGE: string = OG_IMAGE_URL;
 
-function localeOf(params: { locale?: string }): Locale {
-  return isLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
-}
-
 export const Route = createFileRoute("/{-$locale}/blog/$slug")({
   loader: async ({ params }) => {
-    const post = await getPublishedPostBySlug({ data: params.slug });
+    const [post, published] = await Promise.all([
+      getPublishedPostBySlug({ data: params.slug }),
+      getPublishedPosts(),
+    ]);
     if (!post) {
       throw notFound();
     }
-    return post;
+    return { ...post, related: relatedPosts(post.slug, published) };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData }) => {
     // Unknown slug — the loader threw notFound(); keep it out of the index.
     if (!loaderData) {
       return { meta: NOT_FOUND_META };
     }
-    const locale = localeOf(params);
     const basePath = `/blog/${loaderData.slug}`;
     // Post BODIES come from the DB and are not translated, so a post has one
     // canonical English URL and no hreflang alternates — only the chrome differs.
@@ -45,7 +44,7 @@ export const Route = createFileRoute("/{-$locale}/blog/$slug")({
         title: `${loaderData.title} — Cove IVF`,
         description: loaderData.description,
         path: basePath,
-        locale,
+        locale: DEFAULT_LOCALE,
         type: "article",
         image: loaderData.og_image_url ?? DEFAULT_OG_IMAGE,
       }),
@@ -98,6 +97,8 @@ function BlogPost() {
   const locale = useLocale();
   const t = useT();
   const localeParam = locale === DEFAULT_LOCALE ? undefined : locale;
+  const discovery = blogDiscoveryCopy[locale];
+  const tool = articleTool(post.slug);
 
   // Crumb URLs follow the ACTIVE locale so the JSON-LD trail matches the links
   // on the page, even though the post body itself is English-only.
@@ -109,11 +110,16 @@ function BlogPost() {
 
   return (
     <div className="relative min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema(post)) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema(post)) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema(crumbs.map(({ label, path }) => ({ name: label, path })))),
+          __html: JSON.stringify(
+            breadcrumbSchema(crumbs.map(({ label, path }) => ({ name: label, path }))),
+          ),
         }}
       />
       <BackgroundBlobs />
@@ -121,18 +127,84 @@ function BlogPost() {
       <main className="relative z-10 mx-auto max-w-3xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
         <Breadcrumbs
           label={t.nav.breadcrumb}
-          items={crumbs.map(({ label, to }) => ({ label, to, params: to ? { locale: localeParam } : undefined }))}
+          items={crumbs.map(({ label, to }) => ({
+            label,
+            to,
+            params: to ? { locale: localeParam } : undefined,
+          }))}
         />
-        <p className="mt-4 font-mono-tnum text-[11px] uppercase tracking-widest text-muted">{formatDate(post.published_at, locale)}</p>
-        <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">{post.title}</h1>
+        <p className="mt-4 font-mono-tnum text-[11px] uppercase tracking-widest text-muted">
+          {formatDate(post.published_at, locale)}
+        </p>
+        <h1 className="mt-4 font-display text-4xl font-semibold text-plum sm:text-5xl">
+          {post.title}
+        </h1>
         <p className="mt-5 max-w-2xl text-lg text-plum/80">{post.description}</p>
 
-        <article className="blog-body mt-12" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
+        <article
+          lang="en"
+          dir="ltr"
+          className="blog-body mt-12"
+          dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
+        />
+        {tool && (
+          <aside
+            lang="en"
+            dir="ltr"
+            className="mt-10 rounded-2xl border border-line bg-petal/40 p-6"
+          >
+            <h2 className="font-display text-2xl font-semibold text-plum">
+              <a href={tool.href} className="underline underline-offset-4 hover:text-rose">
+                {tool.label}
+              </a>
+            </h2>
+            <p className="mt-3 text-plum/80">{tool.detail}</p>
+          </aside>
+        )}
+        {post.related.length > 0 && (
+          <nav aria-label={discovery.related} className="mt-10">
+            <h2 className="font-display text-2xl font-semibold text-plum">{discovery.related}</h2>
+            <ul lang="en" dir="ltr" className="mt-4 space-y-3">
+              {post.related.map((related) => (
+                <li key={related.slug}>
+                  <a
+                    href={`/blog/${related.slug}`}
+                    className="text-plum underline underline-offset-4 hover:text-rose"
+                  >
+                    {related.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+        <p className="mt-8">
+          <a
+            href={localizedPath("/features", locale)}
+            className="text-plum underline underline-offset-4 hover:text-rose"
+          >
+            {discovery.features}
+          </a>
+        </p>
         <aside className="mt-12 rounded-2xl border border-line bg-petal/40 p-6">
-          <h2 className="font-display text-2xl font-semibold text-plum">{t.home.downloadCta.heading}</h2>
+          <h2 className="font-display text-2xl font-semibold text-plum">
+            {t.home.downloadCta.heading}
+          </h2>
           <div className="mt-5 flex flex-wrap gap-4">
-            <a data-store-placement="article_end" href={APP_STORE_URL} className="rounded-full bg-rose px-6 py-3 text-sm font-semibold text-white hover:bg-rose-deep">{t.common.downloadOnAppStore}</a>
-            <a data-store-placement="article_end" href={GOOGLE_PLAY_URL} className="rounded-full bg-plum px-6 py-3 text-sm font-semibold text-white hover:bg-plum-soft">{t.common.googlePlayAlt}</a>
+            <a
+              data-store-placement="article_end"
+              href={APP_STORE_URL}
+              className="rounded-full bg-rose px-6 py-3 text-sm font-semibold text-white hover:bg-rose-deep"
+            >
+              {t.common.downloadOnAppStore}
+            </a>
+            <a
+              data-store-placement="article_end"
+              href={GOOGLE_PLAY_URL}
+              className="rounded-full bg-plum px-6 py-3 text-sm font-semibold text-white hover:bg-plum-soft"
+            >
+              {t.common.googlePlayAlt}
+            </a>
           </div>
           <p className="mt-4 text-sm text-muted">{t.faqPage.items[4].a}</p>
         </aside>

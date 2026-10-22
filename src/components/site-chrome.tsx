@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { FaEnvelope, FaInstagram } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
-import coveLogo from "@/assets/cove-logo.png";
+import coveLogo from "@/assets/cove-logo.webp";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { useLocale, useT } from "@/i18n";
 import { DEFAULT_LOCALE } from "@/i18n/config";

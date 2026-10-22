@@ -15,11 +15,11 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/reveal";
 import { IPhoneScreenshot } from "@/components/iphone-frame";
 import { useT } from "@/i18n";
-import injectionsScreen from "@/assets/app/injections.png";
-import stagesScreen from "@/assets/app/stages.png";
-import scanSheetScreen from "@/assets/app/scan-sheet.png";
-import verifyScanScreen from "@/assets/app/verify-scan.png";
-import triggerScreen from "@/assets/app/trigger-takeover.png";
+import injectionsScreen from "@/assets/app/injections.webp";
+import stagesScreen from "@/assets/app/stages.webp";
+import scanSheetScreen from "@/assets/app/scan-sheet.webp";
+import verifyScanScreen from "@/assets/app/verify-scan.webp";
+import triggerScreen from "@/assets/app/trigger-takeover.webp";
 
 /* ---------- Life during IVF (situations, not testimonials) ---------- */
 

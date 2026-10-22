@@ -8,11 +8,11 @@ import { canonicalLink, hreflangLinks, pageMeta } from "@/lib/seo";
 import { getDictionary, useLocale, useT } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, type Locale } from "@/i18n/config";
 import googlePlayBadge from "@/assets/google-play-badge.png";
-import scanSheetScreen from "@/assets/app/scan-sheet.png";
-import todayScreen from "@/assets/app/today.png";
-import triggerScreen from "@/assets/app/trigger-takeover.png";
-import injectionsScreen from "@/assets/app/injections.png";
-import stagesScreen from "@/assets/app/stages.png";
+import scanSheetScreen from "@/assets/app/scan-sheet.webp";
+import todayScreen from "@/assets/app/today.webp";
+import triggerScreen from "@/assets/app/trigger-takeover.webp";
+import injectionsScreen from "@/assets/app/injections.webp";
+import stagesScreen from "@/assets/app/stages.webp";
 
 function localeOf(params: { locale?: string }): Locale {
   return isLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
