@@ -1,5 +1,6 @@
 import { parseLocalePath } from "@/i18n/config";
-import { captureStoreClick } from "./posthog";
+import { captureStoreClick, captureToolDownload } from "./posthog";
+import { toolCampaign, toolDownloadUrl } from "./tool-attribution";
 import { campaignTag, storePlatform } from "./store-click";
 
 /** Delegation also covers CMS-rendered links and future client-side navigation. */
@@ -20,6 +21,13 @@ export function listenForStoreClicks(): () => void {
     if (!platform) return;
     // CMS articles cite the regional Australian listing as review evidence.
     if (link.closest("article") && new URL(link.href).pathname.startsWith("/au/")) return;
+    if (toolCampaign(window.location.pathname)) {
+      if (new URLSearchParams(window.location.search).get("utm_campaign") === "codex_verification") {
+        link.href = toolDownloadUrl(window.location.pathname, true);
+      }
+      captureToolDownload(window.location.pathname);
+      return;
+    }
     const { locale, basePath } = parseLocalePath(window.location.pathname);
     // Public route paths only; never capture a URL query, hash or DOM text.
     const page = /^\/(?:[a-z0-9-]+\/)*[a-z0-9-]*$/.test(basePath) ? basePath : "/other";

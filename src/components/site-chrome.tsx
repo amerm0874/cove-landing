@@ -63,7 +63,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-line/70 bg-blush/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link to="/{-$locale}" params={localeParams} className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src={coveLogo} alt="" aria-hidden className="h-8 w-auto" />
+          <img src={coveLogo} alt="" aria-hidden className="h-8 w-auto" width={636} height={517} />
           <span className="font-display text-2xl font-semibold text-plum">{t.common.brand}</span>
         </Link>
 
@@ -144,13 +144,15 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-2.5">
-              <img src={coveLogo} alt="" aria-hidden className="h-7 w-auto" />
+              <img src={coveLogo} alt="" aria-hidden className="h-7 w-auto" width={636} height={517} loading="lazy" />
               <span className="font-display text-xl font-semibold">{t.common.brand}</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted">{t.footer.disclaimer}</p>
           </div>
           <div className="flex flex-col gap-6 sm:flex-row sm:gap-12">
             <nav className="flex flex-col gap-2 text-sm">
+              <a href="/days-past-embryo-transfer-calculator" className="text-plum hover:text-rose" hrefLang="en">Days past transfer calculator (English)</a>
+              <a href="/ivf-medication-cost-calculator" className="text-plum hover:text-rose" hrefLang="en">Medication quote calculator (English)</a>
               <Link to="/{-$locale}/features" params={localeParams} className="text-plum hover:text-rose">{t.nav.features}</Link>
               <Link to="/{-$locale}/blog" params={localeParams} className="text-plum hover:text-rose">{t.nav.blog}</Link>
               <Link to="/{-$locale}/faq" params={localeParams} className="text-plum hover:text-rose">{t.nav.faq}</Link>

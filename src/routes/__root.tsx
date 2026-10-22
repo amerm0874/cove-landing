@@ -18,7 +18,8 @@ import appCss from "../styles.css?url";
 import { LOGO_URL, OG_IMAGE_ALT, OG_IMAGE_URL as SITE_OG_IMAGE_URL, SITE_URL } from "@/lib/seo";
 import coveLogo from "../assets/cove-logo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { capturePostHogException, initPostHog } from "../lib/posthog";
+import { capturePostHogException, captureToolView, initPostHog } from "../lib/posthog";
+import { toolCampaign } from "../lib/tool-attribution";
 import { listenForStoreClicks } from "../lib/store-click-tracking";
 
 function NotFoundComponent() {
@@ -196,11 +197,14 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     initPostHog();
     return listenForStoreClicks();
   }, []);
+
+  useEffect(() => { captureToolView(pathname); }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -214,8 +218,8 @@ function RootComponent() {
       />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <Analytics />
-      <SpeedInsights />
+      <Analytics beforeSend={(event) => toolCampaign(new URL(event.url).pathname) ? null : event} />
+      <SpeedInsights beforeSend={(event) => toolCampaign(new URL(event.url).pathname) ? null : event} />
     </QueryClientProvider>
   );
 }

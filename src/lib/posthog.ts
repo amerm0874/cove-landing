@@ -1,6 +1,7 @@
 import posthog from "posthog-js";
 import type { CaptureResult } from "posthog-js";
 import { filterStoreProperties } from "./store-click";
+import { filterToolProperties, toolEventProperties } from "./tool-attribution";
 
 /** From VITE_POSTHOG_KEY — never hardcode. Missing key = analytics no-op. */
 const POSTHOG_API_KEY = import.meta.env.VITE_POSTHOG_KEY?.trim() ?? "";
@@ -25,6 +26,10 @@ function redact(value: string): string {
 /** The affiliate/support pages collect an email address — never let it reach an exception. */
 function beforeSend(event: CaptureResult | null): CaptureResult | null {
   try {
+    if (event?.event === "site_tool_viewed" || event?.event === "site_tool_download_clicked") {
+      event.properties = filterToolProperties(event.properties);
+      return event;
+    }
     if (event?.event === "store_link_clicked") {
       event.properties = filterStoreProperties(event.properties);
       return event;
@@ -46,7 +51,7 @@ function beforeSend(event: CaptureResult | null): CaptureResult | null {
 
 /**
  * Client-only init (guarded by the window check in the call site). This is a
- * public marketing site. Only explicit download clicks are enabled: no replay,
+ * public marketing site. Explicit tool views and download clicks only: no replay,
  * form autocapture, persistent identifiers or automatic pageviews.
  */
 export function initPostHog(): void {
@@ -86,4 +91,18 @@ export function captureStoreClick(properties: Record<string, string>): void {
 export function capturePostHogException(error: unknown): void {
   if (!initialized) return;
   posthog.captureException(error);
+}
+
+let lastToolPath = "";
+export function captureToolView(pathname: string): void {
+  if (!initialized || lastToolPath === pathname) return;
+  lastToolPath = pathname;
+  const properties = toolEventProperties(pathname, window.location.search);
+  if (properties) posthog.capture("site_tool_viewed", properties);
+}
+
+export function captureToolDownload(pathname: string): void {
+  if (!initialized) return;
+  const properties = toolEventProperties(pathname, window.location.search);
+  if (properties) posthog.capture("site_tool_download_clicked", properties, { transport: "sendBeacon", send_instantly: true });
 }

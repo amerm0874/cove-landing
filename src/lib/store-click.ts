@@ -4,7 +4,7 @@ export function storePlatform(href: string): "ios" | "android" | null {
     const url = new URL(href);
     if (url.protocol !== "https:") return null;
     if (url.hostname === "apps.apple.com" && /(?:^|\/)id6788749556(?:\/|$)/.test(url.pathname)) return "ios";
-    if (url.hostname === "cove.onelink.me" && url.pathname === "/lzsv/web") return "ios";
+    if (url.hostname === "cove.onelink.me" && ["/lzsv/web", "/lzsv"].includes(url.pathname)) return "ios";
     if (url.hostname === "play.google.com" && url.pathname === "/store/apps/details" && url.searchParams.get("id") === "com.mohamedamer.cove") return "android";
     return null;
   } catch {

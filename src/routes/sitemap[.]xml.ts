@@ -51,6 +51,8 @@ async function buildSitemapXml(): Promise<string> {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...staticUrls,
+    `  <url><loc>${absolute("/days-past-embryo-transfer-calculator")}</loc></url>`,
+    `  <url><loc>${absolute("/ivf-medication-cost-calculator")}</loc></url>`,
     ...postUrls,
     "</urlset>",
   ].join("\n");

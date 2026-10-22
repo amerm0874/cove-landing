@@ -9,19 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as DaysPastEmbryoTransferCalculatorRouteImport } from './routes/days-past-embryo-transfer-calculator'
+import { Route as IvfMedicationCostCalculatorRouteImport } from './routes/ivf-medication-cost-calculator'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
-import { Route as Char123LocaleChar125TermsRouteImport } from './routes/{-$locale}/terms'
-import { Route as Char123LocaleChar125SupportRouteImport } from './routes/{-$locale}/support'
-import { Route as Char123LocaleChar125PrivacyRouteImport } from './routes/{-$locale}/privacy'
-import { Route as Char123LocaleChar125FeaturesRouteImport } from './routes/{-$locale}/features'
-import { Route as Char123LocaleChar125FaqRouteImport } from './routes/{-$locale}/faq'
-import { Route as Char123LocaleChar125DeleteAccountRouteImport } from './routes/{-$locale}/delete-account'
 import { Route as Char123LocaleChar125AffiliateRouteImport } from './routes/{-$locale}/affiliate'
+import { Route as Char123LocaleChar125DeleteAccountRouteImport } from './routes/{-$locale}/delete-account'
+import { Route as Char123LocaleChar125FaqRouteImport } from './routes/{-$locale}/faq'
+import { Route as Char123LocaleChar125FeaturesRouteImport } from './routes/{-$locale}/features'
+import { Route as Char123LocaleChar125PrivacyRouteImport } from './routes/{-$locale}/privacy'
+import { Route as Char123LocaleChar125SupportRouteImport } from './routes/{-$locale}/support'
+import { Route as Char123LocaleChar125TermsRouteImport } from './routes/{-$locale}/terms'
 import { Route as Char123LocaleChar125BlogIndexRouteImport } from './routes/{-$locale}/blog/index'
 import { Route as Char123LocaleChar125BlogSlugRouteImport } from './routes/{-$locale}/blog/$slug'
 
+const DaysPastEmbryoTransferCalculatorRoute =
+  DaysPastEmbryoTransferCalculatorRouteImport.update({
+    id: '/days-past-embryo-transfer-calculator',
+    path: '/days-past-embryo-transfer-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IvfMedicationCostCalculatorRoute =
+  IvfMedicationCostCalculatorRouteImport.update({
+    id: '/ivf-medication-cost-calculator',
+    path: '/ivf-medication-cost-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -39,16 +53,27 @@ const Char123LocaleChar125IndexRoute =
     path: '/',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
-const Char123LocaleChar125TermsRoute =
-  Char123LocaleChar125TermsRouteImport.update({
-    id: '/terms',
-    path: '/terms',
+const Char123LocaleChar125AffiliateRoute =
+  Char123LocaleChar125AffiliateRouteImport.update({
+    id: '/affiliate',
+    path: '/affiliate',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
-const Char123LocaleChar125SupportRoute =
-  Char123LocaleChar125SupportRouteImport.update({
-    id: '/support',
-    path: '/support',
+const Char123LocaleChar125DeleteAccountRoute =
+  Char123LocaleChar125DeleteAccountRouteImport.update({
+    id: '/delete-account',
+    path: '/delete-account',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125FaqRoute = Char123LocaleChar125FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => Char123LocaleChar125RouteRoute,
+} as any)
+const Char123LocaleChar125FeaturesRoute =
+  Char123LocaleChar125FeaturesRouteImport.update({
+    id: '/features',
+    path: '/features',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const Char123LocaleChar125PrivacyRoute =
@@ -57,27 +82,16 @@ const Char123LocaleChar125PrivacyRoute =
     path: '/privacy',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
-const Char123LocaleChar125FeaturesRoute =
-  Char123LocaleChar125FeaturesRouteImport.update({
-    id: '/features',
-    path: '/features',
+const Char123LocaleChar125SupportRoute =
+  Char123LocaleChar125SupportRouteImport.update({
+    id: '/support',
+    path: '/support',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
-const Char123LocaleChar125FaqRoute = Char123LocaleChar125FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => Char123LocaleChar125RouteRoute,
-} as any)
-const Char123LocaleChar125DeleteAccountRoute =
-  Char123LocaleChar125DeleteAccountRouteImport.update({
-    id: '/delete-account',
-    path: '/delete-account',
-    getParentRoute: () => Char123LocaleChar125RouteRoute,
-  } as any)
-const Char123LocaleChar125AffiliateRoute =
-  Char123LocaleChar125AffiliateRouteImport.update({
-    id: '/affiliate',
-    path: '/affiliate',
+const Char123LocaleChar125TermsRoute =
+  Char123LocaleChar125TermsRouteImport.update({
+    id: '/terms',
+    path: '/terms',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const Char123LocaleChar125BlogIndexRoute =
@@ -95,6 +109,8 @@ const Char123LocaleChar125BlogSlugRoute =
 
 export interface FileRoutesByFullPath {
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/days-past-embryo-transfer-calculator': typeof DaysPastEmbryoTransferCalculatorRoute
+  '/ivf-medication-cost-calculator': typeof IvfMedicationCostCalculatorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$locale}/affiliate': typeof Char123LocaleChar125AffiliateRoute
   '/{-$locale}/delete-account': typeof Char123LocaleChar125DeleteAccountRoute
@@ -108,6 +124,8 @@ export interface FileRoutesByFullPath {
   '/{-$locale}/blog/': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRoutesByTo {
+  '/days-past-embryo-transfer-calculator': typeof DaysPastEmbryoTransferCalculatorRoute
+  '/ivf-medication-cost-calculator': typeof IvfMedicationCostCalculatorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$locale}/affiliate': typeof Char123LocaleChar125AffiliateRoute
   '/{-$locale}/delete-account': typeof Char123LocaleChar125DeleteAccountRoute
@@ -123,6 +141,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/days-past-embryo-transfer-calculator': typeof DaysPastEmbryoTransferCalculatorRoute
+  '/ivf-medication-cost-calculator': typeof IvfMedicationCostCalculatorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$locale}/affiliate': typeof Char123LocaleChar125AffiliateRoute
   '/{-$locale}/delete-account': typeof Char123LocaleChar125DeleteAccountRoute
@@ -139,6 +159,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/{-$locale}'
+    | '/days-past-embryo-transfer-calculator'
+    | '/ivf-medication-cost-calculator'
     | '/sitemap.xml'
     | '/{-$locale}/affiliate'
     | '/{-$locale}/delete-account'
@@ -152,6 +174,8 @@ export interface FileRouteTypes {
     | '/{-$locale}/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/days-past-embryo-transfer-calculator'
+    | '/ivf-medication-cost-calculator'
     | '/sitemap.xml'
     | '/{-$locale}/affiliate'
     | '/{-$locale}/delete-account'
@@ -166,6 +190,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/{-$locale}'
+    | '/days-past-embryo-transfer-calculator'
+    | '/ivf-medication-cost-calculator'
     | '/sitemap.xml'
     | '/{-$locale}/affiliate'
     | '/{-$locale}/delete-account'
@@ -181,11 +207,27 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
+  DaysPastEmbryoTransferCalculatorRoute: typeof DaysPastEmbryoTransferCalculatorRoute
+  IvfMedicationCostCalculatorRoute: typeof IvfMedicationCostCalculatorRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/days-past-embryo-transfer-calculator': {
+      id: '/days-past-embryo-transfer-calculator'
+      path: '/days-past-embryo-transfer-calculator'
+      fullPath: '/days-past-embryo-transfer-calculator'
+      preLoaderRoute: typeof DaysPastEmbryoTransferCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ivf-medication-cost-calculator': {
+      id: '/ivf-medication-cost-calculator'
+      path: '/ivf-medication-cost-calculator'
+      fullPath: '/ivf-medication-cost-calculator'
+      preLoaderRoute: typeof IvfMedicationCostCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -207,39 +249,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/{-$locale}/terms': {
-      id: '/{-$locale}/terms'
-      path: '/terms'
-      fullPath: '/{-$locale}/terms'
-      preLoaderRoute: typeof Char123LocaleChar125TermsRouteImport
-      parentRoute: typeof Char123LocaleChar125RouteRoute
-    }
-    '/{-$locale}/support': {
-      id: '/{-$locale}/support'
-      path: '/support'
-      fullPath: '/{-$locale}/support'
-      preLoaderRoute: typeof Char123LocaleChar125SupportRouteImport
-      parentRoute: typeof Char123LocaleChar125RouteRoute
-    }
-    '/{-$locale}/privacy': {
-      id: '/{-$locale}/privacy'
-      path: '/privacy'
-      fullPath: '/{-$locale}/privacy'
-      preLoaderRoute: typeof Char123LocaleChar125PrivacyRouteImport
-      parentRoute: typeof Char123LocaleChar125RouteRoute
-    }
-    '/{-$locale}/features': {
-      id: '/{-$locale}/features'
-      path: '/features'
-      fullPath: '/{-$locale}/features'
-      preLoaderRoute: typeof Char123LocaleChar125FeaturesRouteImport
-      parentRoute: typeof Char123LocaleChar125RouteRoute
-    }
-    '/{-$locale}/faq': {
-      id: '/{-$locale}/faq'
-      path: '/faq'
-      fullPath: '/{-$locale}/faq'
-      preLoaderRoute: typeof Char123LocaleChar125FaqRouteImport
+    '/{-$locale}/affiliate': {
+      id: '/{-$locale}/affiliate'
+      path: '/affiliate'
+      fullPath: '/{-$locale}/affiliate'
+      preLoaderRoute: typeof Char123LocaleChar125AffiliateRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/delete-account': {
@@ -249,11 +263,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125DeleteAccountRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/{-$locale}/affiliate': {
-      id: '/{-$locale}/affiliate'
-      path: '/affiliate'
-      fullPath: '/{-$locale}/affiliate'
-      preLoaderRoute: typeof Char123LocaleChar125AffiliateRouteImport
+    '/{-$locale}/faq': {
+      id: '/{-$locale}/faq'
+      path: '/faq'
+      fullPath: '/{-$locale}/faq'
+      preLoaderRoute: typeof Char123LocaleChar125FaqRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/features': {
+      id: '/{-$locale}/features'
+      path: '/features'
+      fullPath: '/{-$locale}/features'
+      preLoaderRoute: typeof Char123LocaleChar125FeaturesRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/privacy': {
+      id: '/{-$locale}/privacy'
+      path: '/privacy'
+      fullPath: '/{-$locale}/privacy'
+      preLoaderRoute: typeof Char123LocaleChar125PrivacyRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/support': {
+      id: '/{-$locale}/support'
+      path: '/support'
+      fullPath: '/{-$locale}/support'
+      preLoaderRoute: typeof Char123LocaleChar125SupportRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/terms': {
+      id: '/{-$locale}/terms'
+      path: '/terms'
+      fullPath: '/{-$locale}/terms'
+      preLoaderRoute: typeof Char123LocaleChar125TermsRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/blog/': {
@@ -308,6 +350,8 @@ const Char123LocaleChar125RouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
+  DaysPastEmbryoTransferCalculatorRoute: DaysPastEmbryoTransferCalculatorRoute,
+  IvfMedicationCostCalculatorRoute: IvfMedicationCostCalculatorRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
